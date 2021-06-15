@@ -19,10 +19,12 @@
     "@angular/platform-browser": "~12.0.1",
     "@angular/platform-browser-dynamic": "~12.0.1",
     "@angular/router": "~12.0.1",
-    "@ionic/angular": "^5.6.9",
-    "@ionic/storage-angular": "^3.0.6",
-    "@ngx-translate/core": "^13.0.0",
-    "ngx-translate": "0.0.1-security",
+    "@capacitor/app": "1.0.1",
+    "@capacitor/core": "3.0.1",
+    "@capacitor/haptics": "1.0.1",
+    "@capacitor/keyboard": "1.0.1",
+    "@capacitor/status-bar": "1.0.1",
+    "@ionic/angular": "^5.5.2",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
@@ -37,6 +39,7 @@
     "@angular/compiler": "~12.0.1",
     "@angular/compiler-cli": "~12.0.1",
     "@angular/language-service": "~12.0.1",
+    "@capacitor/cli": "3.0.1",
     "@ionic/angular-toolkit": "^4.0.0",
     "@ionic/lab": "3.2.10",
     "@types/jasmine": "~3.6.0",
@@ -44,7 +47,6 @@
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "4.16.1",
     "@typescript-eslint/parser": "4.16.1",
-    "cordova-sqlite-storage": "^6.0.0",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
@@ -61,10 +63,5 @@
     "ts-node": "~8.3.0",
     "typescript": "~4.2.4"
   },
-  "description": "An Ionic project",
-  "cordova": {
-    "plugins": {
-      "cordova-sqlite-storage": {}
-    }
-  }
+  "description": "An Ionic project"
 }
