@@ -15,6 +15,26 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
+  {
+    path: 'signin',
+    loadChildren: () => import('./signin/signin.module').then( m => m.SigninPageModule)
+  },
+  {
+    path: 'cerca',
+    loadChildren: () => import('./cerca/cerca.module').then( m => m.CercaPageModule)
+  },
+  {
+    path: 'preferiti',
+    loadChildren: () => import('./preferiti/preferiti.module').then( m => m.PreferitiPageModule)
+  },
+  {
+    path: 'profilo',
+    loadChildren: () => import('./profilo/profilo.module').then( m => m.ProfiloPageModule)
+  },
+  {
+    path: 'aggiungi',
+    loadChildren: () => import('./aggiungi/aggiungi.module').then( m => m.AggiungiPageModule)
+  },
 ];
 
 @NgModule({

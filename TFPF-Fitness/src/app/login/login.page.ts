@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +17,13 @@ export class LoginPage implements OnInit {
     // codice per entrare nel portale
 
     this.router.navigate(['/home']);
+  }
+
+  signinpage(){
+    // Registrati
+
+    this.router.navigate(['/signin']);
+
   }
 
 }

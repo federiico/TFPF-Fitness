@@ -1,15 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-cerca',
+  templateUrl: './cerca.page.html',
+  styleUrls: ['./cerca.page.scss'],
 })
-export class HomePage {
+export class CercaPage implements OnInit {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
+  ngOnInit() {
+  }
+
+  
   home(){
     this.router.navigate(['/home']);
   }
@@ -19,7 +23,7 @@ export class HomePage {
   }
 
   aggiungi(){
-    this.router.navigate(['/aggiungi']);
+    this.router.navigate(['/aggiungi_scheda']);
   }
 
   preferiti(){
@@ -30,7 +34,4 @@ export class HomePage {
     this.router.navigate(['/profilo']);
   }
 
-  paginascheda(){
-    
-  }
 }
