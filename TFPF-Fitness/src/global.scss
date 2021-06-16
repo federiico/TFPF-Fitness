@@ -1,0 +1,128 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+#logo_alto{
+    position: relative;
+    text-align: center;
+    padding-top: 10%;
+    margin-left: 5%;
+    width: 150px;
+}
+
+#aggiungi{
+    height: 40px;
+    width: 50px;
+}
+
+#griglia {
+  padding-left: 2%;
+  padding-right: 2%;
+  text-align: center;
+  }
+
+  #a{
+    --background: #00D833;
+    --background-activated: white;
+    --background-hover: #00D833;
+    border-radius: 5%;
+    height: 120px;
+    width: 130px;
+  }
+  
+  #b{
+    --background: #3399FF;
+    --background-activated: white;
+    --background-hover: #3399FF;
+    border-radius: 5%;
+    height: 120px;
+    width: 130px;
+  }
+  
+  #c{
+    --background: #FF1D0B;
+    --background-activated: white;
+    --background-hover: #FF1D0B;
+    border-radius: 5%;
+    height: 120px;
+    width: 130px;
+  }
+  
+  #d{
+    --background: #FF9800;
+    --background-activated: white;
+    --background-hover: #FF9800;
+    border-radius: 5%;
+    
+    height: 120px;
+    width: 130px;
+  }
+  
+  #e{
+    --background: #FFD800;
+    --background-activated: white;
+    --background-hover: #FFD800;
+    border-radius: 5%;
+    height: 120px;
+    width: 130px;
+  }
+  
+  #f{
+    --background: #FF40AC;
+    --background-activated: white;
+    --background-hover: #FF40AC;
+    border-radius: 5%;
+    
+    height: 120px;
+    width: 130px;
+  }
+
+  #scritta {
+    text-align: left;
+    padding-left: 5%;
+  }
+
+  #bottone_a{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    --background: #FF40AC;
+    --background-activated: white;
+    --background-hover: #FF40AC;
+  }
+
+  #float{
+    position:fixed;
+    width:60px;
+    height:60px;
+    bottom:70px;
+    right:20px;
+    background-color:#0C9;
+    color:#FFF;
+    border-radius:50px;
+    text-align:center;
+    box-shadow: 2px 2px 3px #999;
+  }

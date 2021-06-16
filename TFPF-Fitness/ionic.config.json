@@ -1,0 +1,7 @@
+{
+  "name": "TFPF-Fitness",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
