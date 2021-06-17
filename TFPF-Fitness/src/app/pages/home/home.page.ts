@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +9,15 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private db:DatabaseService) {}
+
+  ngOnInit(){
+    this.db.getDatabaseState().subscribe(ready => {
+      if(ready){
+        //codice del db
+      }
+    })
+  }
 
   home(){
     this.router.navigate(['/home']);

@@ -7,22 +7,22 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
-/*import { SQLitePorter, SQLitePorterOriginal } from '@ionic-native/sqlite-porter';
-import { SQLite, SQLiteOriginal } from '@ionic-native/sqlite';
+import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
+import { SQLite } from '@ionic-native/sqlite/ngx';
 
-import { HttpClientModule } from '@angular/common/http';*/
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
-    //HttpClientModule
+    HttpClientModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    /*SQLitePorterOriginal,
-    SQLiteOriginal*/
+    SQLitePorter,
+    SQLite
   ],
   bootstrap: [AppComponent],
 })
