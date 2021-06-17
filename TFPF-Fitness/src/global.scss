@@ -51,6 +51,7 @@
     border-radius: 5%;
     height: 120px;
     width: 130px;
+    
   }
   
   #b{
@@ -60,6 +61,7 @@
     border-radius: 5%;
     height: 120px;
     width: 130px;
+    
   }
   
   #c{
@@ -69,6 +71,7 @@
     border-radius: 5%;
     height: 120px;
     width: 130px;
+    
   }
   
   #d{
@@ -76,9 +79,9 @@
     --background-activated: white;
     --background-hover: #FF9800;
     border-radius: 5%;
-    
     height: 120px;
     width: 130px;
+    
   }
   
   #e{
@@ -88,6 +91,7 @@
     border-radius: 5%;
     height: 120px;
     width: 130px;
+    
   }
   
   #f{
@@ -95,9 +99,9 @@
     --background-activated: white;
     --background-hover: #FF40AC;
     border-radius: 5%;
-    
     height: 120px;
     width: 130px;
+    
   }
 
   #scritta {
@@ -109,6 +113,12 @@
     margin: auto;
     width: 50%;
     padding: 10px;
+    --background: #FF40AC;
+    --background-activated: white;
+    --background-hover: #FF40AC;
+  }
+
+  #bottone_viola{
     --background: #FF40AC;
     --background-activated: white;
     --background-hover: #FF40AC;
@@ -126,3 +136,42 @@
     text-align:center;
     box-shadow: 2px 2px 3px #999;
   }
+
+  #header{
+    background-color: white;
+    border-bottom: transparent;
+    box-shadow: transparent;
+  }
+
+  #tabs{
+    position: fixed;
+  }
+
+  #profilo{
+    display:block;
+    margin:0px auto;
+    text-align:center;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.centro{
+  text-align: center; 
+  align-content: center;
+  align-items: center;
+}
+
+#scritta_piccola {
+  line-height: 5px;
+  position: relative;
+  font-size: 12px;
+  text-align: left;
+  padding-left: 5%;
+}
+
+.sotto{
+  position: relative;
+  bottom:0;
+}

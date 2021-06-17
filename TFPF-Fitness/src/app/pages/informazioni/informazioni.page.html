@@ -1,0 +1,70 @@
+<ion-content>
+  <ion-toolbar>
+    <a href="http://localhost:8100/home"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
+  </ion-toolbar>
+  <br>
+  <img id="profilo" src="assets/image/profile-user.png" alt="">
+  <p id="scritta">Le tue informazioni personali:</p>
+
+  <form action="">
+    <ion-item>
+      <ion-label>Username</ion-label>
+      <ion-input class="centro"  value="Il tuo Username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-input class="centro"  value="Il tuo Nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cognome</ion-label>
+      <ion-input class="centro" value="Il tuo Cognome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input class="centro" value="La tua e-mail"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input class="centro" value="123" type="password"></ion-input>
+    </ion-item>
+    <ion-toolbar>
+      <div class="centro">
+        <ion-button size="small" shape="round" id="bottone_viola"> <p class="centro">Modifica Immagine</p><ion-icon name="brush"></ion-icon> </ion-button>
+      </div>
+      <div class="centro">
+        <ion-button size="small" type="submit" shape="round" id="bottone_viola"> <p class="centro">Conferma modifiche</p><ion-icon name="checkmark-done-circle-outline"></ion-icon></ion-button>
+      </div>
+    </ion-toolbar>
+  </form>
+    
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home" (click)="home()">
+        <ion-icon name="home-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="cerca" (click)="cerca()">
+        <ion-icon name="search-outline"></ion-icon>
+        <ion-label>Cerca</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="aggiungi" (click)="aggiungi()">
+        <ion-icon id="aggiungi" name="add-circle-outline"></ion-icon>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="preferiti" (click)="preferiti()">
+        <ion-icon name="heart-outline"></ion-icon>
+        <ion-label>Preferiti</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="profilo" (click)="profilo()">
+        <ion-icon name="person-circle-outline"></ion-icon>
+        <ion-label>Profilo</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-content>
+
+

@@ -1,0 +1,22 @@
+<ion-content [fullscreen]="true">
+  <div id="logo" >
+    <img src="assets/image/logo.png" alt="logo" width="150 px" height="150 px">
+  </div>
+
+  <ion-item>
+    <ion-input placeholder="Username">
+    </ion-input>
+    <ion-icon name="person-outline"></ion-icon>
+  </ion-item>
+  <br>
+  <ion-item>
+    <ion-input placeholder="Password" type="password">
+    </ion-input>
+    <ion-icon name="lock-closed-outline"></ion-icon>
+  </ion-item>
+
+  <ion-button (click)="logmein()" id="bottonelogin" shape="round">ACCEDI <ion-icon name="log-in-outline"></ion-icon></ion-button>
+  <div class="sotto">
+    <ion-button (click)="signinpage()" id="bottonesignin" shape="round" expand="block">REGISTRATI <ion-icon name="push-outline"></ion-icon></ion-button>
+  </div>
+  </ion-content>
