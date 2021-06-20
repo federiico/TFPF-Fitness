@@ -6,39 +6,41 @@
 
     <p id="scritta">Benvenuto in TFPF-Fitness.</p>
   
-    <ion-item>
-      <ion-input placeholder="Nome">
-      </ion-input>
-      <ion-icon name="person-outline"></ion-icon>
-    </ion-item>
-    <br>
-    <ion-item>
-      <ion-input placeholder="Cognome">
-      </ion-input>
-      <ion-icon name="person-outline"></ion-icon>
-    </ion-item>
-    <br>
-    <ion-item>
-      <ion-input placeholder="E-mail">
-      </ion-input>
-      <ion-icon name="mail-outline"></ion-icon>
-    </ion-item>
-    <br>
-    <ion-item>
-      <ion-input placeholder="Username">
-      </ion-input>
-      <ion-icon name="people-outline"></ion-icon>
-    </ion-item>
-    <br>
-    <ion-item>
-      <ion-input placeholder="Password" type="password">
-      </ion-input>
-      <ion-icon name="lock-closed-outline"></ion-icon>
-    </ion-item>
-    <br>
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <ion-item>
+        <ion-input type="text" placeholder="Nome" required formControlName="nome">
+        </ion-input>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input type="text" placeholder="Cognome"  required formControlName="cognome">
+        </ion-input>
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input type="text" placeholder="E-mail"  required formControlName="email">
+        </ion-input>
+        <ion-icon name="mail-outline"></ion-icon>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input type="text" placeholder="Username"  required formControlName="username">
+        </ion-input>
+        <ion-icon name="people-outline"></ion-icon>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input placeholder="Password" type="password"  required formControlName="password">
+        </ion-input>
+        <ion-icon name="lock-closed-outline"></ion-icon>
+      </ion-item>
+      <br>
 
-    <ion-button id="bottone" (click)="signin()" shape="round" expand="block" >REGISTRATI <ion-icon name="push-outline"></ion-icon></ion-button>
-    <br>
+      <ion-button type="submit" id="bottone" shape="round" expand="block" >REGISTRATI <ion-icon name="push-outline"></ion-icon></ion-button>
+      <br>
+    </form>
     <div class="sotto">
       <ion-button id="bottonesignin" (click)="logme()" shape="round" expand="block" >ACCEDI <ion-icon name="log-in-outline"></ion-icon></ion-button>
     </div>
