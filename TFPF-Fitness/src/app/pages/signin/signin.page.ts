@@ -1,30 +1,84 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { IonicAuthService } from '../../services/ionic-auth.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.page.html',
   styleUrls: ['./signin.page.scss'],
 })
-export class SigninPage{
+export class SigninPage implements OnInit {
 
-  constructor(private router: Router) { }
+  userForm: FormGroup;
+  successMsg: string = '';
+  errorMsg: string = '';
 
-  form =new FormGroup({
-    nome : new FormControl('', [Validators.required]),
-    cognome : new FormControl('', [Validators.required]),
-    email : new FormControl('', [Validators.required]),
-    username : new FormControl('', [Validators.required]),
-    password : new FormControl('', [Validators.required]),
-  });
+  error_msg = {
+    'email': [
+      { 
+        type: 'required', 
+        message: 'Inserisci un email.' 
+      },
+      { 
+        type: 'pattern', 
+        message: 'Email non valida.' 
+      }
+    ],
+    'password': [
+      { 
+        type: 'required', 
+        message: 'Password necessaria.' 
+      },
+      { 
+        type: 'minlength', 
+        message: 'Password deve essere di almeno 6 caratteri' 
+      }
+    ]
+  };
+
+  constructor( 
+    private router: Router,
+    private ionicAuthService: IonicAuthService,
+    private fb: FormBuilder
+    ) { }
+
+    ngOnInit() {
+      this.userForm = this.fb.group({
+        nome: new FormControl('', Validators.compose([
+          Validators.required
+        ])),
+        cognome: new FormControl('', Validators.compose([
+          Validators.required
+        ])),
+        username: new FormControl('', Validators.compose([
+          Validators.required
+        ])),
+        email: new FormControl('', Validators.compose([
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        ])),
+        password: new FormControl('', Validators.compose([
+          Validators.minLength(6),
+          Validators.required
+        ])),
+      });
+    }
   
-  onSubmit(){
-    console.log(this.form.value);
-    this.router.navigate(['/home']);
+  
+  signUp(value){
+    this.ionicAuthService.createUser(value)
+    .then((response) => {
+      this.errorMsg = "Nope";
+      this.successMsg = "Nuovo Utente creato.";
+      this.router.navigate(['/home']);
+    }, error => {
+      this.errorMsg = error.message;
+      this.successMsg = "Nope";
+    });
+
   }
-  
+
   logme(){
     this.router.navigate(['/login']);
   }

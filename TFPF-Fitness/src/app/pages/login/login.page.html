@@ -2,21 +2,31 @@
   <div id="logo" >
     <img src="assets/image/logo.png" alt="logo" width="150 px" height="150 px">
   </div>
-  <form [formGroup]="form" (submit)="onSubmit()">
+
+  
+
+  <form class="form" [formGroup]="userForm" (ngSubmit)="logmeIN(userForm.value)">
     <ion-item>
-      <ion-input placeholder="Username" >
+      <ion-input placeholder="E-mail" formControlName="email">
       </ion-input>
       <ion-icon name="person-outline"></ion-icon>
     </ion-item>
     <br>
     <ion-item>
-      <ion-input placeholder="Password" type="password" >
+      <ion-input placeholder="Password" type="password" formControlName="password">
       </ion-input>
       <ion-icon name="lock-closed-outline"></ion-icon>
     </ion-item>
 
-    <ion-button (click)="logmein()" id="bottonelogin" shape="round" type="submit">ACCEDI <ion-icon name="log-in-outline"></ion-icon></ion-button>
+    <ion-button (click)="logmein()" id="bottonelogin" shape="round" type="submit" [disabled]="!userForm.valid">ACCEDI <ion-icon name="log-in-outline"></ion-icon></ion-button>
   </form> 
+
+  <ng-container *ngFor="let error of error_msg.email">
+    <div style="text-align: center; color: red;" *ngIf="userForm.get('email').hasError(error.type) && (userForm.get('email').dirty || userForm.get('email').touched)">
+      {{ error.message }}
+    </div>
+  </ng-container>
+  
   <div class="sotto">
     <ion-button (click)="signinpage()" id="bottonesignin" shape="round" expand="block">REGISTRATI <ion-icon name="push-outline"></ion-icon></ion-button>
   </div>

@@ -1,49 +1,60 @@
-<ion-content>
-  <ion-content [fullscreen]="true">
+<ion-header hidden>
+  <ion-toolbar color="danger">
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="position:static">
     <div id="logo_registrazione" >
       <img src="assets/image/logo.png" alt="logo" width="75 px" height="75 px">
     </div>
 
     <p id="scritta">Benvenuto in TFPF-Fitness.</p>
-  
-    <form [formGroup]="form" (submit)="onSubmit()">
+    
+    <ng-container *ngFor="let error of error_msg.email">
+      <div style="text-align: center; color: red;" *ngIf="userForm.get('email').hasError(error.type) && (userForm.get('email').dirty || userForm.get('email').touched)">
+        {{ error.message }}
+      </div>
+    </ng-container>
+
+    <form class="form" [formGroup]="userForm" (ngSubmit)="signUp(userForm.value)" >
       <ion-item>
-        <ion-input type="text" placeholder="Nome" required formControlName="nome">
+        <ion-input placeholder="Nome" formControlName="nome">
         </ion-input>
         <ion-icon name="person-outline"></ion-icon>
       </ion-item>
       <br>
       <ion-item>
-        <ion-input type="text" placeholder="Cognome"  required formControlName="cognome">
+        <ion-input placeholder="Cognome" formControlName="cognome">
         </ion-input>
         <ion-icon name="person-outline"></ion-icon>
       </ion-item>
       <br>
       <ion-item>
-        <ion-input type="text" placeholder="E-mail"  required formControlName="email">
+        <ion-input placeholder="E-mail" formControlName="email">
         </ion-input>
         <ion-icon name="mail-outline"></ion-icon>
       </ion-item>
       <br>
       <ion-item>
-        <ion-input type="text" placeholder="Username"  required formControlName="username">
+        <ion-input placeholder="Username" formControlName="username">
         </ion-input>
         <ion-icon name="people-outline"></ion-icon>
       </ion-item>
       <br>
       <ion-item>
-        <ion-input placeholder="Password" type="password"  required formControlName="password">
+        <ion-input placeholder="Password" type="password" formControlName="password">
         </ion-input>
         <ion-icon name="lock-closed-outline"></ion-icon>
       </ion-item>
       <br>
 
-      <ion-button type="submit" id="bottone" shape="round" expand="block" >REGISTRATI <ion-icon name="push-outline"></ion-icon></ion-button>
-      <br>
+      <ion-button id="bottone" type="submit" expand="block" [disabled]="!userForm.valid" shape="round" expand="block" >REGISTRATI <ion-icon name="push-outline"></ion-icon></ion-button>
     </form>
-    <div class="sotto">
+    <br>
+
+    <div>
       <ion-button id="bottonesignin" (click)="logme()" shape="round" expand="block" >ACCEDI <ion-icon name="log-in-outline"></ion-icon></ion-button>
     </div>
-    
-    
+
 </ion-content>
