@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicAuthService } from '../../services/ionic-auth.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-signin',
@@ -40,7 +41,8 @@ export class SigninPage implements OnInit {
   constructor( 
     private router: Router,
     private ionicAuthService: IonicAuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private database: AngularFirestore
     ) { }
 
     ngOnInit() {
@@ -69,6 +71,27 @@ export class SigninPage implements OnInit {
   signUp(value){
     this.ionicAuthService.createUser(value)
     .then((response) => {
+
+      this.database.collection("Utenti").add({   name: value.nome,    cognome: value.cognome, email: value.email, username: value.username, password:value.password})
+      .then((docRef) => {  
+
+        var UtenteRef = this.database.collection("Utenti").doc(docRef.id);
+
+        return UtenteRef.update({
+            uid: docRef.id
+        })
+        .then(() => {
+            console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+
+        })
+      .catch((error) => {    console.error("Error adding document: ", error);});
+
+
       this.errorMsg = "Nope";
       this.successMsg = "Nuovo Utente creato.";
       this.router.navigate(['/home']);
@@ -76,6 +99,8 @@ export class SigninPage implements OnInit {
       this.errorMsg = error.message;
       this.successMsg = "Nope";
     });
+
+    console.log(this.fb);
 
   }
 

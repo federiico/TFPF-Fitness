@@ -4,12 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./pages/signin/signin.module').then( m => m.SigninPageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'pages/signin',
-    pathMatch: 'full'
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'home',
@@ -48,10 +43,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profiloutente/profiloutente.module').then( m => m.ProfiloutentePageModule)
   },
   {
-    path: 'categoriaschede',
-    loadChildren: () => import('./pages/categoriaschede/categoriaschede.module').then( m => m.CategoriaschedePageModule)
-  },
-  {
     path: 'scheda',
     loadChildren: () => import('./pages/scheda/scheda.module').then( m => m.SchedaPageModule)
   },
@@ -62,6 +53,30 @@ const routes: Routes = [
   {
     path: 'esercizio',
     loadChildren: () => import('./pages/esercizio/esercizio.module').then( m => m.EsercizioPageModule)
+  },
+  {
+    path: 'categoriascheda-calisthenics',
+    loadChildren: () => import('./pages/categoriascheda-calisthenics/categoriascheda-calisthenics.module').then( m => m.CategoriaschedaCalisthenicsPageModule)
+  },
+  {
+    path: 'categoriascheda-yoga',
+    loadChildren: () => import('./pages/categoriascheda-yoga/categoriascheda-yoga.module').then( m => m.CategoriaschedaYogaPageModule)
+  },
+  {
+    path: 'categoriascheda-power-lifting',
+    loadChildren: () => import('./pages/categoriascheda-power-lifting/categoriascheda-power-lifting.module').then( m => m.CategoriaschedaPowerLiftingPageModule)
+  },
+  {
+    path: 'categoriascheda-cardio',
+    loadChildren: () => import('./pages/categoriascheda-cardio/categoriascheda-cardio.module').then( m => m.CategoriaschedaCardioPageModule)
+  },
+  {
+    path: 'categoriascheda-crossfit',
+    loadChildren: () => import('./pages/categoriascheda-crossfit/categoriascheda-crossfit.module').then( m => m.CategoriaschedaCrossfitPageModule)
+  },
+  {
+    path: 'categoriascheda-pesistica',
+    loadChildren: () => import('./pages/categoriascheda-pesistica/categoriascheda-pesistica.module').then( m => m.CategoriaschedaPesisticaPageModule)
   },
 ];
 

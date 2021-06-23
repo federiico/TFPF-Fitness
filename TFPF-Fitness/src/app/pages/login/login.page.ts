@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicAuthService } from '../../services/ionic-auth.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-
+import { AngularFirestore } from '@angular/fire/firestore';
+import { NavComponentWithProps, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginPage implements OnInit {
   successMsg: string = '';
   errorMsg: string = '';
   
+  errore: string = '';
 
   error_msg = {
     'email': [
@@ -34,7 +36,10 @@ export class LoginPage implements OnInit {
   constructor(
     private router: Router, 
     private ionicAuthService: IonicAuthService,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private firestore: AngularFirestore,
+    private nav: NavController
+    ) { }
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -57,8 +62,11 @@ export class LoginPage implements OnInit {
         this.router.navigate(['home']);
       }, error => {
         this.errorMsg = error.message;
-        this.successMsg = "Email/password non validi";
+        this.successMsg ="";
       })
+    this.ionicAuthService.signinUser(value).catch((response) => {
+      this.errore = "Email/password non validi";
+    })
   }
 
   signinpage(){

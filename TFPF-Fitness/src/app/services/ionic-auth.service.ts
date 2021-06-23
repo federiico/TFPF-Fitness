@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase/app';
+import { Utente } from '../modal/Utente';
+
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +10,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 
 export class IonicAuthService {
 
+  private utente : Utente;
   constructor(
     private angularFireAuth: AngularFireAuth
   ) { }  
@@ -46,5 +50,15 @@ export class IonicAuthService {
   userDetails() {
     return this.angularFireAuth.user
   }
+
+  setUid(utente: Utente){
+      return this.utente = utente;
+  }
+
+  getUtenteUid(): string{
+    return this.utente.uid;
+  }
+
+
 
 }
