@@ -16,7 +16,7 @@ export class CategoriaschedaCardioPage implements OnInit {
   constructor(private router: Router,private database: AngularFirestore) { }
 
   ngOnInit() {
-    this.SchedeList = this.database.collection<Schede>(`SchedeCardio`).valueChanges();
+    this.SchedeList = this.database.collection<Schede>("scheda", ref => ref.where('genere', '==', 'Cardio')).valueChanges();
   }
 
   home(){

@@ -16,7 +16,7 @@ export class CategoriaschedaPowerLiftingPage implements OnInit {
   constructor(private router: Router,private database: AngularFirestore) { }
 
   ngOnInit() {
-    this.SchedeList = this.database.collection<Schede>(`SchedePowerLifting`).valueChanges();
+    this.SchedeList = this.database.collection<Schede>("scheda", ref => ref.where('genere', '==', 'Powerlifting')).valueChanges();
   }
 
   home(){

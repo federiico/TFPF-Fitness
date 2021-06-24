@@ -72,7 +72,7 @@ export class SigninPage implements OnInit {
     this.ionicAuthService.createUser(value)
     .then((response) => {
 
-      this.database.collection("Utenti").add({   name: value.nome,    cognome: value.cognome, email: value.email, username: value.username, password:value.password})
+      this.database.collection("Utenti").add({   nome: value.nome,    cognome: value.cognome, email: value.email, username: value.username, password:value.password})
       .then((docRef) => {  
 
         var UtenteRef = this.database.collection("Utenti").doc(docRef.id);

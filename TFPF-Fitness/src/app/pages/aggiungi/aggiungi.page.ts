@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IonicAuthService } from '../../services/ionic-auth.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-aggiungi',
@@ -9,9 +12,50 @@ import { Router } from '@angular/router';
 
 export class AggiungiPage implements OnInit {
 
-  constructor(private router: Router) { }
+  ExForm: FormGroup;
+
+
+  error_msg = {
+    'nome': [
+      { 
+        type: 'required', 
+        message: 'Inserisci un nome.' 
+      }
+    ],
+    'intensita': [
+      { 
+        type: 'required', 
+        message: 'Inserisci un intensità.' 
+      }
+    ],
+    'genere': [
+      { 
+        type: 'required', 
+        message: 'Inserisci un genere.' 
+      }
+    ]
+  };
+
+  constructor(
+    private router: Router,
+    private fb: FormBuilder,
+    private database: AngularFirestore
+    ) { }
 
   ngOnInit() {
+
+    this.ExForm = new FormGroup({
+      nome: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      intensita: new FormControl('', Validators.compose([
+        Validators.required
+      ])),
+      genere: new FormControl('', Validators.compose([
+        Validators.required
+      ]))
+   });
+
   }
 
   home(){
@@ -38,8 +82,33 @@ export class AggiungiPage implements OnInit {
     console.log('Segment changed', ev);
   }
 
-  esercizipage(){
+  eserizipage(value){
+
+    this.database.collection("scheda").add({   nome: value.nome, genere: value.genere, intensita: value.intensita, creatore: "",})
+      .then((docRef) => {  
+
+        var ExRef = this.database.collection("scheda").doc(docRef.id);
+
+        return ExRef.update({
+            id: docRef.id
+        })
+        .then(() => {
+            console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+
+        })
+      .catch((error) => {    console.error("Error adding document: ", error);});
+
+    console.log(value.nome);
+    console.log(value.genere);
+    console.log(value.intensita);
+
     this.router.navigate(['/aggiungiesercizi']);
+
   }
 
 }

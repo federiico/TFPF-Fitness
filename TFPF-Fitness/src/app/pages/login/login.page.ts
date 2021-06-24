@@ -67,6 +67,7 @@ export class LoginPage implements OnInit {
     this.ionicAuthService.signinUser(value).catch((response) => {
       this.errore = "Email/password non validi";
     })
+
   }
 
   signinpage(){

@@ -4,37 +4,48 @@
   </ion-toolbar>  
   <p id="scritta"><b>Aggiungi una scheda di allenamento:</b></p>
   <div size="12" mode="md">
-    <ion-toolbar>
-      <ion-item>
-        <ion-input placeholder="Nome Scheda">
-        </ion-input>
-        <ion-icon name="body-outline"></ion-icon>
-      </ion-item>
-      <br>
-      <p id="scritta_secondaria">Intesità:</p>
-      <ion-segment id="select" (ionChange)="segmentChanged($event)">
-        <ion-segment-button value="0">
-          <ion-label>Bassa</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="1">
-          <ion-label>Media</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="2">
-          <ion-label>Alta</ion-label>
-        </ion-segment-button>
-      </ion-segment>
-      <br>
-      <ion-list>
-        <p id="scritta_secondaria">Genere:</p>
+    <form class="form" [formGroup]="ExForm" (ngSubmit)="eserizipage(ExForm.value)">
+      <ion-toolbar>
         <ion-item>
-          <ion-select placeholder="Seleziona">
-            <ion-select-option value="yoga">Yoga</ion-select-option>
-            <ion-select-option value="bodybuilde">Bodybuilder</ion-select-option>
-          </ion-select>
+          <ion-input placeholder="Nome Scheda" formControlName="nome">
+          </ion-input>
+          <ion-icon name="body-outline"></ion-icon>
         </ion-item>
-      </ion-list>
-      <ion-button (click)="esercizipage()" id="bottone" shape="round">Vai a seleziona esercizi: <ion-icon name="caret-forward-outline"></ion-icon></ion-button>
-    </ion-toolbar>
+        <br>
+        <p id="scritta_secondaria">Intesità:</p>
+        <ion-segment id="intensita" (ionChange)="segmentChanged($event)" formControlName="intensita">
+          <ion-segment-button value="Bassa">
+            <ion-label>Bassa</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Media">
+            <ion-label>Media</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Alta">
+            <ion-label>Alta</ion-label>
+          </ion-segment-button>
+        </ion-segment>
+        <br>
+        <ion-list>
+          <p id="scritta_secondaria">Genere:</p>
+          <ion-item>
+            <ion-select placeholder="Seleziona" formControlName="genere">
+              <ion-select-option value="Calisthenics">Calisthenics</ion-select-option>
+              <ion-select-option value="yoga">Yoga</ion-select-option>
+              <ion-select-option value="Crossfit">Crossfit</ion-select-option>
+              <ion-select-option value="Cardio">Cardio</ion-select-option>
+              <ion-select-option value="Pesistica">Pesistica</ion-select-option>
+              <ion-select-option value="Powerlifting">Powerlifting</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-button type="submit" id="bottone" shape="round" [disabled]="!ExForm.valid">Vai a seleziona esercizi: <ion-icon name="caret-forward-outline"></ion-icon></ion-button>
+      </ion-toolbar>
+    </form>
+    <ng-container *ngFor="let error of error_msg.email">
+      <div style="text-align: center; color: red;" *ngIf="ExForm.get('email').hasError(error.type) && (ExForm.get('email').dirty || ExForm.get('email').touched)">
+        {{ error.message }}
+      </div>
+    </ng-container>
   </div>
 
 
