@@ -39,8 +39,9 @@ export class CategoriaschedaCrossfitPage implements OnInit {
     this.router.navigate(['/profilo']);
   }
 
-  scheda(){
-    this.router.navigate(['/scheda']);
+  scheda(value){
+    console.log(value);
+    this.router.navigate(['/scheda', value]);
   }
 
 }

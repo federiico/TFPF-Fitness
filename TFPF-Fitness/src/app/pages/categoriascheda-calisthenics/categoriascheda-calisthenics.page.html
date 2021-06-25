@@ -6,7 +6,7 @@
   <p id="scritta"><b>Schede Calisthenics:</b></p>
 
     <ion-item-sliding id="item100" *ngFor="let SchedeCalisthenics of SchedeList  | async"> 
-      <ion-item button="true" ng-click="scheda({{SchedeCalisthenics.id}})" >
+      <ion-item button="true" (click)="scheda(SchedeCalisthenics.id)" >
         <ion-label >
           <h2>Nome Scheda:  {{SchedeCalisthenics.nome}}</h2>
           <p>Intensità: {{SchedeCalisthenics.intensita}}</p>

@@ -39,8 +39,8 @@ export class CategoriaschedaYogaPage implements OnInit {
     this.router.navigate(['/profilo']);
   }
 
-  scheda(){
-    this.router.navigate(['/scheda']);
+  scheda(value){
+    this.router.navigate(['/scheda', value]);
   }
 
 }

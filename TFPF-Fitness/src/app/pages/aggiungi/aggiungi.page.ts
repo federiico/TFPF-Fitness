@@ -88,6 +88,7 @@ export class AggiungiPage implements OnInit {
       .then((docRef) => {  
 
         var ExRef = this.database.collection("scheda").doc(docRef.id);
+        this.router.navigate(['/aggiungiesercizi', docRef.id]);
 
         return ExRef.update({
             id: docRef.id
@@ -107,7 +108,7 @@ export class AggiungiPage implements OnInit {
     console.log(value.genere);
     console.log(value.intensita);
 
-    this.router.navigate(['/aggiungiesercizi']);
+    
 
   }
 

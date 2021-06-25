@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastController } from '@ionic/angular';
+import { Observable } from 'rxjs';
+import { Esercizio } from 'src/app/modal/Esercizio';
 
 @Component({
   selector: 'app-esercizio',
@@ -8,9 +12,23 @@ import { Router } from '@angular/router';
 })
 export class EsercizioPage implements OnInit {
 
-  constructor(private router: Router) { }
+  id: any;
+  id2: any;
+  private Esercizio: Observable<Esercizio[]>;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private database: AngularFirestore,
+    public toastController: ToastController
+    ) {
+      this.id = this.route.snapshot.paramMap.get('id');
+      this.id2 = this.route.snapshot.paramMap.get('id2'); 
+    }
 
   ngOnInit() {
+    
+    this.Esercizio = this.database.collection<Esercizio>("esercizio", ref => ref.where('id', '==', this.id)).valueChanges();
   }
 
   home(){
@@ -34,7 +52,7 @@ export class EsercizioPage implements OnInit {
   }
 
   scheda(){
-    this.router.navigate(['/scheda']);
+    this.router.navigate(['/scheda', this.id2]);
   }
 
 }

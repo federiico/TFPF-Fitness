@@ -6,12 +6,12 @@
   <p id="scritta"><b>Schede Yoga:</b></p>
 
     <ion-item-sliding id="item100"> 
-      <ion-item button="true" ng-click="scheda({{SchedeYoga.id}})" *ngFor="let SchedeYoga of SchedeList  | async">
+      <ion-item button="true" (click)="scheda(SchedeYoga.id)" *ngFor="let SchedeYoga of SchedeList  | async">
         <ion-label >
-          <h2>Nome Scheda:  {{SchedeYoga.Nome}}</h2>
-          <p>Intensità: {{SchedeYoga.Intensita}}</p>
-          <p>Genere: {{SchedeYoga.Genere}}</p>
-          <p>Utente creatore:{{SchedeYoga.Utente}}</p>
+          <h2>Nome Scheda:  {{SchedeYoga.nome}}</h2>
+          <p>Intensità: {{SchedeYoga.intensita}}</p>
+          <p>Genere: {{SchedeYoga.genere}}</p>
+          <p>Utente creatore:{{SchedeYoga.utente}}</p>
         </ion-label>
         <ion-note slot="end">
           {{SchedeYoga.Data}}

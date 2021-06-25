@@ -39,7 +39,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/aggiungi/aggiungi.module').then( m => m.AggiungiPageModule)
   },
   {
-    path: 'aggiungiesercizi',
+    path: 'aggiungiesercizi/:id',
     loadChildren: () => import('./pages/aggiungiesercizi/aggiungiesercizi.module').then( m => m.AggiungieserciziPageModule)
   },
   {
@@ -47,7 +47,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profiloutente/profiloutente.module').then( m => m.ProfiloutentePageModule)
   },
   {
-    path: 'scheda',
+    path: 'scheda/:id',
     loadChildren: () => import('./pages/scheda/scheda.module').then( m => m.SchedaPageModule)
   },
   {
@@ -55,7 +55,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/informazioni/informazioni.module').then( m => m.InformazioniPageModule)
   },
   {
-    path: 'esercizio',
+    path: 'esercizio/:id/:id2',
     loadChildren: () => import('./pages/esercizio/esercizio.module').then( m => m.EsercizioPageModule)
   },
   {

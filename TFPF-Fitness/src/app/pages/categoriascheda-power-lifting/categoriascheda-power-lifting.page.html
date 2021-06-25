@@ -6,12 +6,12 @@
   <p id="scritta"><b>Schede PowerLifting:</b></p>
 
     <ion-item-sliding id="item100"> 
-      <ion-item button="true" ng-click="scheda({{SchedePowerLifting.id}})" *ngFor="let SchedePowerLifting of SchedeList  | async">
+      <ion-item button="true" (click)="scheda(SchedePowerLifting.id)" *ngFor="let SchedePowerLifting of SchedeList  | async">
         <ion-label >
-          <h2>Nome Scheda:  {{SchedePowerLifting.Nome}}</h2>
-          <p>Intensità: {{SchedePowerLifting.Intensita}}</p>
-          <p>Genere: {{SchedePowerLifting.Genere}}</p>
-          <p>Utente creatore:{{SchedePowerLifting.Utente}}</p>
+          <h2>Nome Scheda:  {{SchedePowerLifting.nome}}</h2>
+          <p>Intensità: {{SchedePowerLifting.intensita}}</p>
+          <p>Genere: {{SchedePowerLifting.genere}}</p>
+          <p>Utente creatore:{{SchedePowerLifting.utente}}</p>
         </ion-label>
         <ion-note slot="end">
           {{SchedePowerLifting.Data}}
