@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,14 +8,21 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
 
-  constructor(private router: Router) {}
+  idUtente: any;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.idUtente = this.route.snapshot.paramMap.get('idUtente');
+  }
 
   ngOnInit(){
     
   }
 
   home(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home', this.idUtente]);
   }
 
   cerca(){
@@ -31,7 +38,7 @@ export class HomePage {
   }
 
   profilo(){
-    this.router.navigate(['/profilo']);
+    this.router.navigate(['/profilo', this.idUtente]);
   }
 
   paginascheda($value){

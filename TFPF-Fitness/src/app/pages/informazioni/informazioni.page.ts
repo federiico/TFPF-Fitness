@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-informazioni',
@@ -8,13 +10,62 @@ import { Router } from '@angular/router';
 })
 export class InformazioniPage implements OnInit {
 
-  constructor(private router: Router) { }
+  userForm: FormGroup;
+  idUtente: any;
+  Username: any;
+  Nome: any;
+  Cognome: any;
+  Email: any;
+  Password: any;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private database: AngularFirestore,
+    private fb: FormBuilder
+    ) { 
+      this.idUtente = this.route.snapshot.paramMap.get('idUtente');
+    }
 
   ngOnInit() {
+    this.userForm = this.fb.group({
+      username: new FormControl('', Validators.compose([
+        Validators.minLength(6),
+        Validators.required
+      ])),
+      nome: new FormControl('', Validators.compose([
+        Validators.minLength(6),
+        Validators.required
+      ])),
+      cognome: new FormControl('', Validators.compose([
+        Validators.minLength(6),
+        Validators.required
+      ])),
+      email: new FormControl('', Validators.compose([
+        Validators.minLength(6),
+        Validators.required
+      ])),
+      password: new FormControl('', Validators.compose([
+        Validators.minLength(6),
+        Validators.required
+      ]))
+    });
+
+    var docRef = this.database.collection("utente", ref => ref.where('id','==',this.idUtente));
+    docRef.get().toPromise().then((querySnapshot) => {
+      querySnapshot.forEach( (doc) => {
+        this.Username = doc.data()['username'];
+        this.Nome = doc.data()['nome'];
+        this.Cognome = doc.data()['cognome'];
+        this.Email = doc.data()['email'];
+        this.Password = doc.data()['password'];
+
+      });
+    });
   }
 
   home(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home', this.idUtente]);
   }
 
   cerca(){
@@ -30,11 +81,29 @@ export class InformazioniPage implements OnInit {
   }
 
   profilo(){
-    this.router.navigate(['/profilo']);
+    this.router.navigate(['/profilo', this.idUtente]);
   }
 
-  modificaprofilo(){
-    this.router.navigate(['/informazioni']);
+  modificaprofilo(value){
+    var utenteRef = this.database.collection("utente").doc(this.idUtente);
+
+   
+    return utenteRef.update({
+        nome: value.nome,
+        cognome: value.cognome,
+        username: value.username,
+        email: value.email,
+        password: value.password
+    })
+    .then(() => {
+        console.log("Document successfully updated!");
+        this.router.navigate(['/profilo', this.idUtente]);
+    })
+    .catch((error) => {
+        // The document probably doesn't exist.
+        console.error("Error updating document: ", error);
+    });
+
   }
 
 }

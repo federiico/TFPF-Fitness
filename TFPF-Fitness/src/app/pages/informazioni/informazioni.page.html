@@ -6,33 +6,30 @@
   <img id="profilo" src="assets/image/profile-user.png" alt="">
   <p id="scritta">Le tue informazioni personali:</p>
 
-  <form action="">
+  <form class="form" [formGroup]="userForm" (ngSubmit)="modificaprofilo(userForm.value)">
     <ion-item>
       <ion-label>Username</ion-label>
-      <ion-input class="centro"  value="Il tuo Username"></ion-input>
+      <ion-input class="centro"  formControlName="username" value="{{ Username }}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Nome</ion-label>
-      <ion-input class="centro"  value="Il tuo Nome"></ion-input>
+      <ion-input class="centro"  formControlName="nome" value="{{ Nome }}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Cognome</ion-label>
-      <ion-input class="centro" value="Il tuo Cognome"></ion-input>
+      <ion-input class="centro" formControlName="cognome" value="{{ Cognome }}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>E-mail</ion-label>
-      <ion-input class="centro" value="La tua e-mail"></ion-input>
+      <ion-input class="centro" disabled formControlName="email" value="{{ Email }}"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Password</ion-label>
-      <ion-input class="centro" value="123" type="password"></ion-input>
+      <ion-input class="centro" formControlName="password" value="{{ Password }}" type="password"></ion-input>
     </ion-item>
     <ion-toolbar>
       <div class="centro">
-        <ion-button size="small" shape="round" id="bottone_viola"> <p class="centro">Modifica Immagine</p><ion-icon name="brush"></ion-icon> </ion-button>
-      </div>
-      <div class="centro">
-        <ion-button size="small" type="submit" shape="round" id="bottone_viola"> <p class="centro">Conferma modifiche</p><ion-icon name="checkmark-done-circle-outline"></ion-icon></ion-button>
+        <ion-button size="small" type="submit" shape="round" id="bottone_viola"> <p class="centro">Conferma modifiche</p></ion-button>
       </div>
     </ion-toolbar>
   </form>

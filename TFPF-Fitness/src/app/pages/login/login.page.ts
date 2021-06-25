@@ -38,7 +38,8 @@ export class LoginPage implements OnInit {
     private ionicAuthService: IonicAuthService,
     private fb: FormBuilder,
     private firestore: AngularFirestore,
-    private nav: NavController
+    private nav: NavController,
+    private database: AngularFirestore
     ) { }
 
   ngOnInit() {
@@ -57,9 +58,14 @@ export class LoginPage implements OnInit {
   logmeIN(value) {
     this.ionicAuthService.signinUser(value)
       .then((response) => {
-        console.log(response)
+        var docRef = this.database.collection("utente", ref => ref.where('email','==',value.email));
+        docRef.get().toPromise().then((querySnapshot) => {
+          querySnapshot.forEach( (doc) => {
+            var idUtente = doc.data()['id'];
+            this.router.navigate(['home', idUtente]);
+          });
+        });
         this.errorMsg = "";
-        this.router.navigate(['home']);
       }, error => {
         this.errorMsg = error.message;
         this.successMsg ="";

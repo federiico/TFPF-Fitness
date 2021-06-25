@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-profilo',
@@ -8,13 +9,28 @@ import { Router } from '@angular/router';
 })
 export class ProfiloPage implements OnInit {
 
-  constructor(private router: Router) { }
+  idUtente: any;
+  Username: any;
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private database: AngularFirestore
+  ) { 
+    this.idUtente = this.route.snapshot.paramMap.get('idUtente');
+  }
 
   ngOnInit() {
+    var docRef = this.database.collection("utente", ref => ref.where('id','==',this.idUtente));
+        docRef.get().toPromise().then((querySnapshot) => {
+          querySnapshot.forEach( (doc) => {
+            this.Username = doc.data()['username'];
+          });
+        });
   }
 
   home(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home', this.idUtente]);
   }
 
   cerca(){
@@ -34,6 +50,6 @@ export class ProfiloPage implements OnInit {
   }
 
   modificaprofilo(){
-    this.router.navigate(['/informazioni']);
+    this.router.navigate(['/informazioni', this.idUtente]);
   }
 }

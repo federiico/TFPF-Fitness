@@ -11,7 +11,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/aggiungi/aggiungi.module').then( m => m.AggiungiPageModule)
   },
   {
-    path: 'home',
+    path: 'home/:idUtente',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -31,7 +31,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/preferiti/preferiti.module').then( m => m.PreferitiPageModule)
   },
   {
-    path: 'profilo',
+    path: 'profilo/:idUtente',
     loadChildren: () => import('./pages/profilo/profilo.module').then( m => m.ProfiloPageModule)
   },
   {
@@ -51,7 +51,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/scheda/scheda.module').then( m => m.SchedaPageModule)
   },
   {
-    path: 'informazioni',
+    path: 'informazioni/:idUtente',
     loadChildren: () => import('./pages/informazioni/informazioni.module').then( m => m.InformazioniPageModule)
   },
   {
