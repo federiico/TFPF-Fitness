@@ -3,15 +3,18 @@
     <a href="http://localhost:8100/home"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>
   <br>
-  <p id="scritta"><b>Nome Esercizio:</b></p>
-  <p id="scritta_piccola">Muscolo:</p>
-  <br>
-  <p id="scritta"><b>Descrizione:</b></p>
-  <p id ="scritta">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-  <p id="scritta_piccola">Video esplicativo:</p>
+  <div *ngFor="let Esercizio of Esercizio  | async">
+    <p id="scritta"><b>Nome Esercizio: {{Esercizio.nome}}</b></p>
+    <p id="scritta_piccola">Muscolo: {{Esercizio.muscoli}}</p>
+    <p id="scritta_piccola">Tipologia: {{Esercizio.tipologia}}</p>
+    <br>
+    <p id="scritta"><b>Descrizione: </b></p>
+    <p id ="scritta">{{Esercizio.descrizione}}</p>
+    <p id="scritta_piccola">Per un video esplicativo clicca <a href={{Esercizio.video}}> qui </a></p>
+  </div>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="padding-bottom: 20%;">
-    <ion-fab-button id="bottone_viola" (click)="scheda()">
+    <ion-fab-button id="bottone_viola" (click)=scheda()>
       <ion-icon name="chevron-back"></ion-icon>
     </ion-fab-button>
   </ion-fab>

@@ -8,25 +8,25 @@
   </ion-toolbar>
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="padding-bottom: 20%;">
-    <ion-fab-button id="bottone_b" (click)="home()">
+    <ion-fab-button id="bottone_b" (click)="home()" (click)="openToastF()">
       <ion-icon name="checkmark-done-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   
-  <form>
+  <form [formGroup]="ExplusForm" (ngSubmit)="aggiungiex(ExplusForm.value,Esercizio.id,Esercizio.nome, Esercizio.muscoli, Esercizio.tipologia)" *ngFor="let Esercizio of ExList  | async">
     <div style="text-align: center;">
-      <p id="scritta">Nome Esercizio</p>
-      <p id="scritta">Muscolo</p>
-      <p id="scritta">Tipologia</p>
+      <p id="scritta">Nome Esercizio: {{Esercizio.nome}}</p>
+      <p id="scritta">Muscolo: {{Esercizio.muscoli}}</p>
+      <p id="scritta">Tipologia: {{Esercizio.tipologia}}</p>
       <ion-item> 
         <br>
         <ion-label >N.Ripetizioni</ion-label>
-        <ion-input placeholder="0" type="number" min="0" required></ion-input>
+        <ion-input placeholder="0" type="number" min="0" required formControlName="ripetizioni"></ion-input>
         <ion-label>N.Serie</ion-label>
-        <ion-input placeholder="0" type="number" min="0"></ion-input>
+        <ion-input placeholder="0" type="number" min="0" required formControlName="serie"></ion-input>
       </ion-item>
       <ion-toolbar>
-        <ion-button id="bottone_a" type="submit" >
+        <ion-button id="bottone_a" type="submit" [disabled]="!ExplusForm.valid" (click)="openToast()">
           <ion-icon name="add-outline"></ion-icon>
         </ion-button>
       </ion-toolbar>
