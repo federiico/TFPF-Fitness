@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { Esercizio } from 'src/app/modal/Esercizio';
+import { EsercizioScheda } from 'src/app/modal/EsecizioScheda';
 
 @Component({
   selector: 'app-aggiungiesercizi',
@@ -17,6 +18,7 @@ export class AggiungieserciziPage implements OnInit {
   id: any;
   ExplusForm: FormGroup;
   public ExList: Observable<Esercizio[]>;
+  public ExScheda: Observable<EsercizioScheda[]>;
   toast: any;
 
 
@@ -39,6 +41,14 @@ export class AggiungieserciziPage implements OnInit {
     toast.present();
   }
 
+  async openToastError(){
+    const toast = await this.toastController.create({
+      message: "Aggiungi almeno un esercizio prima di caricare la scheda.",
+      duration: 2000
+    });
+    toast.present();
+  }
+
   async openToastF(){
     const toast = await this.toastController.create({
       message: "Scheda Completata!",
@@ -51,35 +61,103 @@ export class AggiungieserciziPage implements OnInit {
   ngOnInit() {
     this.ExplusForm = this.fb.group({
       serie: new FormControl('', Validators.compose([
-        Validators.required
+        Validators.required,
+        Validators.min(1)
       ])),
       ripetizioni: new FormControl('', Validators.compose([
-        Validators.required
+        Validators.required,
+        Validators.min(1)
       ]))
     });
 
     this.ExList = this.database.collection<Esercizio>("esercizio").valueChanges();
   }
 
+  cercaEsercizi($value){
+    this.ExList = this.database.collection<Esercizio>("esercizio", ref => ref.orderBy('nomeLC').startAt($value.toLowerCase()).endAt($value.toLowerCase()+'\uf8ff')).valueChanges();
+  }
+
+  checkScheda(){
+    this.ExScheda = this.database.collection<EsercizioScheda>("scheda/"+this.id+"/esercizi").valueChanges();
+    this.ExScheda.subscribe(result => {
+      if(result.length == 0)
+        this.openToastError();
+      else{
+        this.openToastF();
+        this.home();
+      }
+    });
+  }
+
   
 
   home(){
+    this.ExScheda = this.database.collection<EsercizioScheda>("scheda/"+this.id+"/esercizi").valueChanges();
+    this.ExScheda.subscribe(result => {
+      if(result.length == 0){
+        this.database.collection("scheda").doc(this.id).delete().then(() => {
+          console.log("Document successfully deleted!");
+        }).catch((error) => {
+          console.error("Error removing document: ", error);
+        });
+      }
+    });
     this.router.navigate(['/home', this.idUtente]);
   }
 
   cerca(){
-    this.router.navigate(['/cerca']);
+    this.ExScheda = this.database.collection<EsercizioScheda>("scheda/"+this.id+"/esercizi").valueChanges();
+    this.ExScheda.subscribe(result => {
+      if(result.length == 0){
+        this.database.collection("scheda").doc(this.id).delete().then(() => {
+          console.log("Document successfully deleted!");
+        }).catch((error) => {
+          console.error("Error removing document: ", error);
+        });
+      }
+    });
+    this.router.navigate(['/cerca', this.idUtente]);
   }
 
   aggiungi(){
+    this.ExScheda = this.database.collection<EsercizioScheda>("scheda/"+this.id+"/esercizi").valueChanges();
+    this.ExScheda.subscribe(result => {
+      if(result.length == 0){
+        this.database.collection("scheda").doc(this.id).delete().then(() => {
+          console.log("Document successfully deleted!");
+        }).catch((error) => {
+          console.error("Error removing document: ", error);
+        });
+      }
+    });
     this.router.navigate(['/aggiungi', this.idUtente]);
   }
 
   preferiti(){
+    this.ExScheda = this.database.collection<EsercizioScheda>("scheda/"+this.id+"/esercizi").valueChanges();
+    this.ExScheda.subscribe(result => {
+      if(result.length == 0){
+        this.database.collection("scheda").doc(this.id).delete().then(() => {
+          console.log("Document successfully deleted!");
+        }).catch((error) => {
+          console.error("Error removing document: ", error);
+        });
+      }
+    });
     this.router.navigate(['/preferiti', this.idUtente]);
   }
 
   profilo(){
+    this.ExScheda = this.database.collection<EsercizioScheda>("scheda/"+this.id+"/esercizi").valueChanges();
+    this.ExScheda.subscribe(result => {
+      if(result.length == 0){
+        this.database.collection("scheda").doc(this.id).delete().then(() => {
+          console.log("Document successfully deleted!");
+        }).catch((error) => {
+          console.error("Error removing document: ", error);
+        });
+      }
+    });
     this.router.navigate(['/profilo', this.idUtente]);
   }
   

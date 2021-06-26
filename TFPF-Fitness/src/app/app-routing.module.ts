@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/signin/signin.module').then( m => m.SigninPageModule)
   },
   {
-    path: 'cerca',
+    path: 'cerca/:idUtente',
     loadChildren: () => import('./pages/cerca/cerca.module').then( m => m.CercaPageModule)
   },
   {
@@ -48,7 +48,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/aggiungiesercizi/aggiungiesercizi.module').then( m => m.AggiungieserciziPageModule)
   },
   {
-    path: 'profiloutente',
+    path: 'profiloutente/:id/:idUtente',
     loadChildren: () => import('./pages/profiloutente/profiloutente.module').then( m => m.ProfiloutentePageModule)
   },
   {
@@ -64,32 +64,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/esercizio/esercizio.module').then( m => m.EsercizioPageModule)
   },
   {
-    path: 'categoriascheda-calisthenics/:idUtente',
-    loadChildren: () => import('./pages/categoriascheda-calisthenics/categoriascheda-calisthenics.module').then( m => m.CategoriaschedaCalisthenicsPageModule)
-  },
-  {
-    path: 'categoriascheda-yoga/:idUtente',
-    loadChildren: () => import('./pages/categoriascheda-yoga/categoriascheda-yoga.module').then( m => m.CategoriaschedaYogaPageModule)
-  },
-  {
-    path: 'categoriascheda-power-lifting/:idUtente',
-    loadChildren: () => import('./pages/categoriascheda-power-lifting/categoriascheda-power-lifting.module').then( m => m.CategoriaschedaPowerLiftingPageModule)
-  },
-  {
-    path: 'categoriascheda-cardio/:idUtente',
-    loadChildren: () => import('./pages/categoriascheda-cardio/categoriascheda-cardio.module').then( m => m.CategoriaschedaCardioPageModule)
-  },
-  {
-    path: 'categoriascheda-crossfit/:idUtente',
-    loadChildren: () => import('./pages/categoriascheda-crossfit/categoriascheda-crossfit.module').then( m => m.CategoriaschedaCrossfitPageModule)
-  },
-  {
-    path: 'categoriascheda-pesistica/:idUtente',
-    loadChildren: () => import('./pages/categoriascheda-pesistica/categoriascheda-pesistica.module').then( m => m.CategoriaschedaPesisticaPageModule)
-  },
-  {
     path: 'preferiticat/:idUtente/:cat',
     loadChildren: () => import('./pages/preferiticat/preferiticat.module').then( m => m.PreferiticatPageModule)
+  },
+  {
+    path: 'schede-profilo/:idUtente/:cat',
+    loadChildren: () => import('./schede-profilo/schede-profilo.module').then( m => m.SchedeProfiloPageModule)
+  },
+  {
+    path: 'schede-categoria/:idUtente/:cat',
+    loadChildren: () => import('./schede-categoria/schede-categoria.module').then( m => m.SchedeCategoriaPageModule)
+  },
+  {
+    path: 'schede-profilo-utente/:id/:idUtente/:cat',
+    loadChildren: () => import('./schede-profilo-utente/schede-profilo-utente.module').then( m => m.SchedeProfiloUtentePageModule)
   },
 
 ];

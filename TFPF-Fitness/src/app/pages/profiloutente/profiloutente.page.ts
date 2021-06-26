@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-profiloutente',
@@ -9,14 +10,25 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class ProfiloutentePage implements OnInit {
 
   idUtente: any;
+  Username: any;
+  id: any;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
-    ) { }
+    private route: ActivatedRoute,
+    private database: AngularFirestore
+  ) { 
+    this.idUtente = this.route.snapshot.paramMap.get('idUtente');
+    this.id = this.route.snapshot.paramMap.get('id');
+  }
 
   ngOnInit() {
-    this.idUtente = this.route.snapshot.paramMap.get('idUtente');
+    var docRef = this.database.collection("utente", ref => ref.where('uid','==',this.id));
+        docRef.get().toPromise().then((querySnapshot) => {
+          querySnapshot.forEach( (doc) => {
+            this.Username = doc.data()['username'];
+          });
+        });
   }
 
   home(){
@@ -24,7 +36,7 @@ export class ProfiloutentePage implements OnInit {
   }
 
   cerca(){
-    this.router.navigate(['/cerca']);
+    this.router.navigate(['/cerca', this.idUtente]);
   }
 
   aggiungi(){
@@ -38,5 +50,24 @@ export class ProfiloutentePage implements OnInit {
   profilo(){
     this.router.navigate(['/profilo', this.idUtente]);
   }
+
+  modificaprofilo(){
+    this.router.navigate(['/informazioni', this.idUtente]);
+  }
+
+  paginascheda($value){
+    if($value == 1)
+      this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Calisthenics"]);
+    if($value == 2)
+      this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Yoga"]);
+    if($value == 3)
+      this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Powerlifting"]);
+    if($value == 4)
+      this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Cardio"]);
+    if($value == 5)
+      this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Crossfit"]);
+    if($value == 6)
+      this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Pesistica"]);
+    }
 
 }

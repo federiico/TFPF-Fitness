@@ -4,11 +4,17 @@
   </ion-toolbar>
   <p id="scritta"><b>Seleziona gli esercizi:</b></p>
   <ion-toolbar>
-    <ion-searchbar placeholder="Cerca l'esercizio..."></ion-searchbar>
+    <ion-searchbar
+    searchIcon="search" 
+    animated
+    cancel-button-icon
+    (ionCancel)="hideSearch()"
+    (ionChange)="cercaEsercizi($event.target.value)"
+    placeholder="Cerca"></ion-searchbar>
   </ion-toolbar>
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="padding-bottom: 20%;">
-    <ion-fab-button id="bottone_b" (click)="home()" (click)="openToastF()">
+    <ion-fab-button id="bottone_b" (click)="checkScheda()">
       <ion-icon name="checkmark-done-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>

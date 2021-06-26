@@ -38,7 +38,7 @@ export class EsercizioPage implements OnInit {
   }
 
   cerca(){
-    this.router.navigate(['/cerca']);
+    this.router.navigate(['/cerca', this.idUtente]);
   }
 
   aggiungi(){

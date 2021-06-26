@@ -30,7 +30,7 @@ export class SchedaPage implements OnInit {
    }
 
   ngOnInit() {
-    this.Scheda = this.database.collection<Schede>("scheda", ref => ref.where('id', '==', this.id)).valueChanges();
+    this.Scheda = this.database.collection<Schede>("scheda", ref => ref.where('uid', '==', this.id)).valueChanges();
 
 
 
@@ -44,7 +44,7 @@ export class SchedaPage implements OnInit {
   }
 
   cerca(){
-    this.router.navigate(['/cerca']);
+    this.router.navigate(['/cerca', this.idUtente]);
   }
 
   aggiungi(){

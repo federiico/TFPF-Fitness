@@ -68,7 +68,7 @@ export class AggiungiPage implements OnInit {
   }
 
   cerca(){
-    this.router.navigate(['/cerca']);
+    this.router.navigate(['/cerca', this.idUtente]);
   }
 
   aggiungi(){

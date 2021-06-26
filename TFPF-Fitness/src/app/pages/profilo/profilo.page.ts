@@ -34,7 +34,7 @@ export class ProfiloPage implements OnInit {
   }
 
   cerca(){
-    this.router.navigate(['/cerca']);
+    this.router.navigate(['/cerca', this.idUtente]);
   }
 
   aggiungi(){
@@ -52,4 +52,19 @@ export class ProfiloPage implements OnInit {
   modificaprofilo(){
     this.router.navigate(['/informazioni', this.idUtente]);
   }
+
+  paginascheda($value){
+    if($value == 1)
+      this.router.navigate(['/schede-profilo', this.idUtente, "Calisthenics"]);
+    if($value == 2)
+      this.router.navigate(['/schede-profilo', this.idUtente, "Yoga"]);
+    if($value == 3)
+      this.router.navigate(['/schede-profilo', this.idUtente, "Powerlifting"]);
+    if($value == 4)
+      this.router.navigate(['/schede-profilo', this.idUtente, "Cardio"]);
+    if($value == 5)
+      this.router.navigate(['/schede-profilo', this.idUtente, "Crossfit"]);
+    if($value == 6)
+      this.router.navigate(['/schede-profilo', this.idUtente, "Pesistica"]);
+    }
 }

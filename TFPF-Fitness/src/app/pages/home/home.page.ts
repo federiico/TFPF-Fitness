@@ -26,7 +26,7 @@ export class HomePage {
   }
 
   cerca(){
-    this.router.navigate(['/cerca']);
+    this.router.navigate(['/cerca', this.idUtente]);
   }
 
   aggiungi(){
@@ -43,16 +43,16 @@ export class HomePage {
 
   paginascheda($value){
     if($value == 1)
-      this.router.navigate(['/categoriascheda-calisthenics', this.idUtente]);
-    if($value == 2)
-      this.router.navigate(['/categoriascheda-yoga', this.idUtente]);
-    if($value == 3)
-      this.router.navigate(['/categoriascheda-power-lifting', this.idUtente]);
-    if($value == 4)
-      this.router.navigate(['/categoriascheda-cardio', this.idUtente]);
-    if($value == 5)
-      this.router.navigate(['/categoriascheda-crossfit', this.idUtente]);
-    if($value == 6)
-      this.router.navigate(['/categoriascheda-pesistica', this.idUtente]);
+    this.router.navigate(['/schede-categoria', this.idUtente, "Calisthenics"]);
+  if($value == 2)
+    this.router.navigate(['/schede-categoria', this.idUtente, "Yoga"]);
+  if($value == 3)
+    this.router.navigate(['/schede-categoria', this.idUtente, "Powerlifting"]);
+  if($value == 4)
+    this.router.navigate(['/schede-categoria', this.idUtente, "Cardio"]);
+  if($value == 5)
+    this.router.navigate(['/schede-categoria', this.idUtente, "Crossfit"]);
+  if($value == 6)
+    this.router.navigate(['/schede-categoria', this.idUtente, "Pesistica"]);
     }
 }
