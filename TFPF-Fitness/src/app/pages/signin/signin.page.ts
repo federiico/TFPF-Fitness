@@ -72,16 +72,17 @@ export class SigninPage implements OnInit {
     this.ionicAuthService.createUser(value)
     .then((response) => {
 
-      this.database.collection("Utenti").add({   nome: value.nome,    cognome: value.cognome, email: value.email, username: value.username, password:value.password})
+      this.database.collection("utente").add({   nome: value.nome,    cognome: value.cognome, email: value.email, username: value.username, password:value.password})
       .then((docRef) => {  
 
-        var UtenteRef = this.database.collection("Utenti").doc(docRef.id);
+        var UtenteRef = this.database.collection("utente").doc(docRef.id);
 
         return UtenteRef.update({
             uid: docRef.id
         })
         .then(() => {
             console.log("Document successfully updated!");
+            this.router.navigate(['/home', docRef.id]);
         })
         .catch((error) => {
             // The document probably doesn't exist.
@@ -94,7 +95,6 @@ export class SigninPage implements OnInit {
 
       this.errorMsg = "Nope";
       this.successMsg = "Nuovo Utente creato.";
-      this.router.navigate(['/home']);
     }, error => {
       this.errorMsg = error.message;
       this.successMsg = "Nope";

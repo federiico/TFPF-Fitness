@@ -21,7 +21,7 @@ export class ProfiloPage implements OnInit {
   }
 
   ngOnInit() {
-    var docRef = this.database.collection("utente", ref => ref.where('id','==',this.idUtente));
+    var docRef = this.database.collection("utente", ref => ref.where('uid','==',this.idUtente));
         docRef.get().toPromise().then((querySnapshot) => {
           querySnapshot.forEach( (doc) => {
             this.Username = doc.data()['username'];
@@ -42,7 +42,7 @@ export class ProfiloPage implements OnInit {
   }
 
   preferiti(){
-    this.router.navigate(['/preferiti']);
+    this.router.navigate(['/preferiti', this.idUtente]);
   }
 
   profilo(){

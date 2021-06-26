@@ -4,6 +4,11 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
@@ -27,7 +32,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/cerca/cerca.module').then( m => m.CercaPageModule)
   },
   {
-    path: 'preferiti',
+    path: 'preferiti/:idUtente',
     loadChildren: () => import('./pages/preferiti/preferiti.module').then( m => m.PreferitiPageModule)
   },
   {
@@ -47,7 +52,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profiloutente/profiloutente.module').then( m => m.ProfiloutentePageModule)
   },
   {
-    path: 'scheda/:id',
+    path: 'scheda/:id/:idUtente',
     loadChildren: () => import('./pages/scheda/scheda.module').then( m => m.SchedaPageModule)
   },
   {
@@ -55,7 +60,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/informazioni/informazioni.module').then( m => m.InformazioniPageModule)
   },
   {
-    path: 'esercizio/:id/:id2',
+    path: 'esercizio/:id/:id2/:idUtente',
     loadChildren: () => import('./pages/esercizio/esercizio.module').then( m => m.EsercizioPageModule)
   },
   {
@@ -82,7 +87,13 @@ const routes: Routes = [
     path: 'categoriascheda-pesistica/:idUtente',
     loadChildren: () => import('./pages/categoriascheda-pesistica/categoriascheda-pesistica.module').then( m => m.CategoriaschedaPesisticaPageModule)
   },
+  {
+    path: 'preferiticat/:idUtente/:cat',
+    loadChildren: () => import('./pages/preferiticat/preferiticat.module').then( m => m.PreferiticatPageModule)
+  },
+
 ];
+
 
 @NgModule({
   imports: [

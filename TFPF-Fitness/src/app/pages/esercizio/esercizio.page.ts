@@ -14,6 +14,7 @@ export class EsercizioPage implements OnInit {
 
   id: any;
   id2: any;
+  idUtente: any;
   private Esercizio: Observable<Esercizio[]>;
 
   constructor(
@@ -24,6 +25,7 @@ export class EsercizioPage implements OnInit {
     ) {
       this.id = this.route.snapshot.paramMap.get('id');
       this.id2 = this.route.snapshot.paramMap.get('id2'); 
+      this.idUtente = this.route.snapshot.paramMap.get('idUtente');
     }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class EsercizioPage implements OnInit {
   }
 
   home(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home', this.idUtente]);
   }
 
   cerca(){
@@ -40,19 +42,19 @@ export class EsercizioPage implements OnInit {
   }
 
   aggiungi(){
-    this.router.navigate(['/aggiungi']);
+    this.router.navigate(['/aggiungi', this.idUtente]);
   }
 
   preferiti(){
-    this.router.navigate(['/preferiti']);
+    this.router.navigate(['/preferiti', this.idUtente]);
   }
 
   profilo(){
-    this.router.navigate(['/profilo']);
+    this.router.navigate(['/profilo', this.idUtente]);
   }
 
   scheda(){
-    this.router.navigate(['/scheda', this.id2]);
+    this.router.navigate(['/scheda', this.id2, this.idUtente]);
   }
 
 }

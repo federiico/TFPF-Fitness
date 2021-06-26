@@ -66,7 +66,7 @@ export class LoginPage implements OnInit {
         var docRef = this.database.collection("utente", ref => ref.where('email','==',value.email));
         docRef.get().toPromise().then((querySnapshot) => {
           querySnapshot.forEach( (doc) => {
-            var idUtente = doc.data()['id'];
+            var idUtente = doc.data()['uid'];
             this.router.navigate(['home', idUtente]);
           });
         });

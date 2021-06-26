@@ -35,7 +35,6 @@ export class AggiungieserciziPage implements OnInit {
     const toast = await this.toastController.create({
       message: "Esercizio aggiunto alla tua scheda.",
       duration: 2000
-
     });
     toast.present();
   }
@@ -77,13 +76,13 @@ export class AggiungieserciziPage implements OnInit {
   }
 
   preferiti(){
-    this.router.navigate(['/preferiti']);
+    this.router.navigate(['/preferiti', this.idUtente]);
   }
 
   profilo(){
     this.router.navigate(['/profilo', this.idUtente]);
   }
-
+  
   aggiungiex(value, RifEx, nome, muscoli, tipologia){
     
 

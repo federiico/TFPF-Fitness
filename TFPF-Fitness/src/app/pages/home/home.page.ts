@@ -34,7 +34,7 @@ export class HomePage {
   }
 
   preferiti(){
-    this.router.navigate(['/preferiti']);
+    this.router.navigate(['/preferiti', this.idUtente]);
   }
 
   profilo(){

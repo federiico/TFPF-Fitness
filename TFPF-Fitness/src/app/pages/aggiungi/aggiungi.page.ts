@@ -76,7 +76,7 @@ export class AggiungiPage implements OnInit {
   }
 
   preferiti(){
-    this.router.navigate(['/preferiti']);
+    this.router.navigate(['/preferiti', this.idUtente]);
   }
 
   profilo(){
@@ -87,8 +87,8 @@ export class AggiungiPage implements OnInit {
     console.log('Segment changed', ev);
   }
 
-  eserizipage(value){
-    var docRef = this.database.collection("utente", ref => ref.where('id','==',this.idUtente));
+  esercizipage(value){
+    var docRef = this.database.collection("utente", ref => ref.where('uid','==',this.idUtente));
         docRef.get().toPromise().then((querySnapshot) => {
           querySnapshot.forEach( (doc) => {
             this.database.collection("scheda").add({   nome: value.nome, genere: value.genere, intensita: value.intensita, creatore: doc.data()['username'],})
@@ -98,7 +98,7 @@ export class AggiungiPage implements OnInit {
               this.router.navigate(['/aggiungiesercizi', docRef.id, this.idUtente]);
 
               return ExRef.update({
-                  id: docRef.id
+                  uid: docRef.id
               })
               .then(() => {
                   console.log("Document successfully updated!");

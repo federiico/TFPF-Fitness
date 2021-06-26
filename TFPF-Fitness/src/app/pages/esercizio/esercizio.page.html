@@ -1,6 +1,6 @@
 <ion-content>
   <ion-toolbar>
-    <a href="http://localhost:8100/home"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
+    <a (click)="home()"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>
   <br>
   <div *ngFor="let Esercizio of Esercizio  | async">
@@ -18,35 +18,32 @@
       <ion-icon name="chevron-back"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-      <ion-tab-button tab="home" (click)="home()">
-        <ion-icon name="home-outline"></ion-icon>
-        <ion-label>Home</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="cerca" (click)="cerca()">
-        <ion-icon name="search-outline"></ion-icon>
-        <ion-label>Cerca</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="aggiungi" (click)="aggiungi()">
-        <ion-icon id="aggiungi" name="add-circle-outline"></ion-icon>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="preferiti" (click)="preferiti()">
-        <ion-icon name="heart-outline"></ion-icon>
-        <ion-label>Preferiti</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="profilo" (click)="profilo()">
-        <ion-icon name="person-circle-outline"></ion-icon>
-        <ion-label>Profilo</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
-
 </ion-content>
+
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="home" (click)="home()">
+    <ion-icon name="home-outline"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="cerca" (click)="cerca()">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-label>Cerca</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="aggiungi" (click)="aggiungi()">
+    <ion-icon id="aggiungi" name="add-circle-outline"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button tab="preferiti" (click)="preferiti()">
+    <ion-icon name="heart-outline"></ion-icon>
+    <ion-label>Preferiti</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="profilo" (click)="profilo()">
+    <ion-icon name="person-circle-outline"></ion-icon>
+    <ion-label>Profilo</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>
 
 

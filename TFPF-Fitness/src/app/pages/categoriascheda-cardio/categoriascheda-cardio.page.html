@@ -1,12 +1,12 @@
 <ion-content>
   <ion-toolbar>
-    <a href="http://localhost:8100/home"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
+    <a (click)="home()"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>
   <br>
   <p id="scritta"><b>Schede Cardio:</b></p>
 
-    <ion-item-sliding id="item100"> 
-      <ion-item button="true" (click)="scheda(SchedeCardio.id)" *ngFor="let SchedeCardio of SchedeList  | async">
+    <ion-item-sliding id="item100" *ngFor="let SchedeCardio of SchedeList  | async"> 
+      <ion-item button="true" (click)="scheda(SchedeCardio.id)" >
         <ion-label >
           <h2>Nome Scheda:  {{SchedeCardio.nome}}</h2>
           <p>Intensità: {{SchedeCardio.intensita}}</p>
@@ -17,39 +17,37 @@
           {{SchedeCardio.Data}}
         </ion-note>
       </ion-item>
-      <ion-item-options side="end">
+      <ion-item-options side="end" (click)="aggpreferiti(SchedeCardio)" >
         <ion-item-option color="danger">
           <ion-icon size="large" name="heart"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
 
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="home" (click)="home()">
-          <ion-icon name="home-outline"></ion-icon>
-          <ion-label>Home</ion-label>
-        </ion-tab-button>
-    
-        <ion-tab-button tab="cerca" (click)="cerca()">
-          <ion-icon name="search-outline"></ion-icon>
-          <ion-label>Cerca</ion-label>
-        </ion-tab-button>
-  
-        <ion-tab-button tab="aggiungi" (click)="aggiungi()">
-          <ion-icon id="aggiungi" name="add-circle-outline"></ion-icon>
-        </ion-tab-button>
-    
-        <ion-tab-button tab="preferiti" (click)="preferiti()">
-          <ion-icon name="heart-outline"></ion-icon>
-          <ion-label>Preferiti</ion-label>
-        </ion-tab-button>
-    
-        <ion-tab-button tab="profilo" (click)="profilo()">
-          <ion-icon name="person-circle-outline"></ion-icon>
-          <ion-label>Profilo</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-
 </ion-content>
+
+<ion-tab-bar slot="bottom">
+  <ion-tab-button tab="home" (click)="home()">
+    <ion-icon name="home-outline"></ion-icon>
+    <ion-label>Home</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="cerca" (click)="cerca()">
+    <ion-icon name="search-outline"></ion-icon>
+    <ion-label>Cerca</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="aggiungi" (click)="aggiungi()">
+    <ion-icon id="aggiungi" name="add-circle-outline"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button tab="preferiti" (click)="preferiti()">
+    <ion-icon name="heart-outline"></ion-icon>
+    <ion-label>Preferiti</ion-label>
+  </ion-tab-button>
+
+  <ion-tab-button tab="profilo" (click)="profilo()">
+    <ion-icon name="person-circle-outline"></ion-icon>
+    <ion-label>Profilo</ion-label>
+  </ion-tab-button>
+</ion-tab-bar>

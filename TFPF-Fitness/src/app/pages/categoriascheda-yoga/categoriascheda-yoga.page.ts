@@ -39,7 +39,7 @@ export class CategoriaschedaYogaPage implements OnInit {
   }
 
   preferiti(){
-    this.router.navigate(['/preferiti']);
+    this.router.navigate(['/preferiti', this.idUtente]);
   }
 
   profilo(){
@@ -47,7 +47,52 @@ export class CategoriaschedaYogaPage implements OnInit {
   }
 
   scheda(value){
-    this.router.navigate(['/scheda', value]);
+    this.router.navigate(['/scheda', value, this.idUtente]);
   }
 
+
+  aggpreferiti(value){
+    var token = 0;
+
+    this.database.collection("utente/"+this.idUtente+"/preferiti", ref => ref.where('idScheda', "==", value.uid)).snapshotChanges().subscribe(res => {
+    if (res.length <= 0 && token == 0)
+    {
+      this.database.collection("utente/"+this.idUtente+"/preferiti").add({ idScheda:value.uid, creatore: value.creatore, genere: value.genere, intensita: value.intensita, nome: value.nome })
+      .then((docRef) => {  
+
+        var SchedaRef = this.database.collection("utente/"+this.idUtente+"/preferiti").doc(docRef.id);
+
+        return SchedaRef.update({
+            uid: docRef.id
+        })
+        .then(() => {
+            console.log("Document successfully updated!");
+        })
+        .catch((error) => {
+            // The document probably doesn't exist.
+            console.error("Error updating document: ", error);
+        });
+        
+        })
+      .catch((error) => {    console.error("Error adding document: ", error);});
+
+      token=1;
+    }
+    else if(res.length > 0 && token == 0)
+    {
+      var docRef = this.database.collection("utente/"+this.idUtente+"/preferiti", ref => ref.where('idScheda', "==", value.id));
+      docRef.get().toPromise().then((querySnapshot) => {
+        querySnapshot.forEach( (doc) => {
+          this.database.collection("utente/"+this.idUtente+"/preferiti").doc(doc.data()["uid"]).delete().then(() => {
+            console.log(doc.data());
+            console.log("Document successfully deleted!");
+          }).catch((error) => {
+            console.error("Error removing document: ", error);
+          });
+        });
+      });
+      token=1;
+    }
+});
+}
 }

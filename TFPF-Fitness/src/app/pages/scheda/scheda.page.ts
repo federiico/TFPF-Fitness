@@ -18,6 +18,7 @@ export class SchedaPage implements OnInit {
   id: any;
   Scheda: Observable<Schede[]>;
   ExScheda: Observable<EsercizioScheda[]>;
+  idUtente: any;
 
   constructor(
     private router: Router,
@@ -25,6 +26,7 @@ export class SchedaPage implements OnInit {
     private database: AngularFirestore
     ) {
     this.id = this.route.snapshot.paramMap.get('id');
+    this.idUtente = this.route.snapshot.paramMap.get('idUtente');
    }
 
   ngOnInit() {
@@ -38,7 +40,7 @@ export class SchedaPage implements OnInit {
   }
 
   home(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home', this.idUtente]);
   }
 
   cerca(){
@@ -46,20 +48,38 @@ export class SchedaPage implements OnInit {
   }
 
   aggiungi(){
-    this.router.navigate(['/aggiungi']);
+    this.router.navigate(['/aggiungi', this.idUtente]);
   }
 
   preferiti(){
-    this.router.navigate(['/preferiti']);
+    this.router.navigate(['/preferiti', this.idUtente]);
   }
 
   profilo(){
-    this.router.navigate(['/profilo']);
+    this.router.navigate(['/profilo', this.idUtente]);
   }
 
   esercizio(id){
     var id2 = this.id;
-    this.router.navigate(['/esercizio', id, id2]);
+    this.router.navigate(['/esercizio', id, id2, this.idUtente]);
   }
+
+  paginaprima($value){
+
+    if($value == "Calisthenics")
+      this.router.navigate(['/categoriascheda-calisthenics', this.idUtente]);
+    if($value == "Yoga")
+      this.router.navigate(['/categoriascheda-yoga', this.idUtente]);
+    if($value == "Powerlifting")
+      this.router.navigate(['/categoriascheda-power-lifting', this.idUtente]);
+    if($value == "Cardio")
+      this.router.navigate(['/categoriascheda-cardio', this.idUtente]);
+    if($value == "Crossfit")
+      this.router.navigate(['/categoriascheda-crossfit', this.idUtente]);
+    if($value == "Pesistica")
+      this.router.navigate(['/categoriascheda-pesistica', this.idUtente]);
+  }
+
+ 
 
 }

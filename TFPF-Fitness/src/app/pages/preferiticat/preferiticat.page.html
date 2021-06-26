@@ -3,27 +3,26 @@
     <a (click)="home()"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>
   <br>
-  <p id="scritta"><b>Schede Yoga:</b></p>
+  <p id="scritta"><b>Schede Preferite {{cat}}:</b></p>
 
-    <ion-item-sliding id="item100" *ngFor="let SchedeYoga of SchedeList  | async"> 
-      <ion-item button="true" (click)="scheda(SchedeYoga.id)" >
+    <ion-item-sliding id="item100" *ngFor="let SchedePref of SchedePref  | async"> 
+      <ion-item button="true" (click)="scheda(SchedePref.idScheda)" >
         <ion-label >
-          <h2>Nome Scheda:  {{SchedeYoga.nome}}</h2>
-          <p>Intensità: {{SchedeYoga.intensita}}</p>
-          <p>Genere: {{SchedeYoga.genere}}</p>
-          <p>Utente creatore:{{SchedeYoga.utente}}</p>
+          <h2>Nome Scheda:  {{SchedePref.nome}}</h2>
+          <p>Intensità: {{SchedePref.intensita}}</p>
+          <p>Genere: {{SchedePref.genere}}</p>
+          <p>Utente creatore:{{SchedePref.creatore}}</p>
         </ion-label>
         <ion-note slot="end">
-          {{SchedeYoga.Data}}
+          {{SchedePref.Data}}
         </ion-note>
       </ion-item>
-      <ion-item-options side="end" (click)="aggpreferiti(SchedeYo)" >
+      <ion-item-options side="end" (click)="aggpreferiti(SchedePref)" >
         <ion-item-option color="danger">
           <ion-icon size="large" name="heart"></ion-icon>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-
 
 </ion-content>
 
@@ -52,3 +51,4 @@
     <ion-label>Profilo</ion-label>
   </ion-tab-button>
 </ion-tab-bar>
+
