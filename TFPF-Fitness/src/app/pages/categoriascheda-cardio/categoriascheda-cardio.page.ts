@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Schede } from 'src/app/modal/Schede';
 import { Observable } from 'rxjs';
@@ -11,16 +11,23 @@ import { Observable } from 'rxjs';
 })
 export class CategoriaschedaCardioPage implements OnInit {
 
+  idUtente: any;
   public SchedeList: Observable<Schede[]>;
 
-  constructor(private router: Router,private database: AngularFirestore) { }
+  constructor(
+    private router: Router,
+    private database: AngularFirestore,
+    private route: ActivatedRoute
+  ) { 
+    this.idUtente = this.route.snapshot.paramMap.get('idUtente');
+  }
 
   ngOnInit() {
     this.SchedeList = this.database.collection<Schede>("scheda", ref => ref.where('genere', '==', 'Cardio')).valueChanges();
   }
 
   home(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home', this.idUtente]);
   }
 
   cerca(){
@@ -28,7 +35,7 @@ export class CategoriaschedaCardioPage implements OnInit {
   }
 
   aggiungi(){
-    this.router.navigate(['/aggiungi']);
+    this.router.navigate(['/aggiungi', this.idUtente]);
   }
 
   preferiti(){
@@ -36,7 +43,7 @@ export class CategoriaschedaCardioPage implements OnInit {
   }
 
   profilo(){
-    this.router.navigate(['/profilo']);
+    this.router.navigate(['/profilo', this.idUtente]);
   }
 
   scheda(value){

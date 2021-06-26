@@ -13,6 +13,7 @@ import { Esercizio } from 'src/app/modal/Esercizio';
 })
 export class AggiungieserciziPage implements OnInit {
 
+  idUtente: any;
   id: any;
   ExplusForm: FormGroup;
   public ExList: Observable<Esercizio[]>;
@@ -27,6 +28,7 @@ export class AggiungieserciziPage implements OnInit {
     public toastController: ToastController
     ) { 
     this.id = this.route.snapshot.paramMap.get('id');
+    this.idUtente = this.route.snapshot.paramMap.get('idUtente');
   }
 
   async openToast(){
@@ -63,7 +65,7 @@ export class AggiungieserciziPage implements OnInit {
   
 
   home(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home', this.idUtente]);
   }
 
   cerca(){
@@ -71,7 +73,7 @@ export class AggiungieserciziPage implements OnInit {
   }
 
   aggiungi(){
-    this.router.navigate(['/aggiungi']);
+    this.router.navigate(['/aggiungi', this.idUtente]);
   }
 
   preferiti(){
@@ -79,7 +81,7 @@ export class AggiungieserciziPage implements OnInit {
   }
 
   profilo(){
-    this.router.navigate(['/profilo']);
+    this.router.navigate(['/profilo', this.idUtente]);
   }
 
   aggiungiex(value, RifEx, nome, muscoli, tipologia){

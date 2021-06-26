@@ -6,7 +6,8 @@ import { CategoriaschedaCalisthenicsPage } from './categoriascheda-calisthenics.
 const routes: Routes = [
   {
     path: '',
-    component: CategoriaschedaCalisthenicsPage
+    component: CategoriaschedaCalisthenicsPage,
+    pathMatch: 'full'
   }
 ];
 

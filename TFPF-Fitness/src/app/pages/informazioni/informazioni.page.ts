@@ -30,15 +30,15 @@ export class InformazioniPage implements OnInit {
   ngOnInit() {
     this.userForm = this.fb.group({
       username: new FormControl('', Validators.compose([
-        Validators.minLength(6),
+        Validators.minLength(3),
         Validators.required
       ])),
       nome: new FormControl('', Validators.compose([
-        Validators.minLength(6),
+        Validators.minLength(3),
         Validators.required
       ])),
       cognome: new FormControl('', Validators.compose([
-        Validators.minLength(6),
+        Validators.minLength(2),
         Validators.required
       ])),
       email: new FormControl('', Validators.compose([

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { IonicAuthService } from '../../services/ionic-auth.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { NavComponentWithProps, NavController } from '@ionic/angular';
+import { NavComponentWithProps, NavController,Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -39,8 +39,13 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private firestore: AngularFirestore,
     private nav: NavController,
-    private database: AngularFirestore
-    ) { }
+    private database: AngularFirestore,
+    private platform: Platform
+    ) {
+      this.platform.ready().then(() => {
+        console.log('Width: ' + platform.width());
+        console.log('Height: ' + platform.height()); });
+  }
 
   ngOnInit() {
     this.userForm = this.fb.group({

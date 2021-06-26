@@ -38,7 +38,7 @@ export class ProfiloPage implements OnInit {
   }
 
   aggiungi(){
-    this.router.navigate(['/aggiungi']);
+    this.router.navigate(['/aggiungi', this.idUtente]);
   }
 
   preferiti(){
@@ -46,7 +46,7 @@ export class ProfiloPage implements OnInit {
   }
 
   profilo(){
-    this.router.navigate(['/profilo']);
+    this.router.navigate(['/profilo', this.idUtente]);
   }
 
   modificaprofilo(){

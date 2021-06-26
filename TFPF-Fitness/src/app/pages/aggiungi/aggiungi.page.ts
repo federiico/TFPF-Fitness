@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,  ActivatedRoute } from '@angular/router';
 import { IonicAuthService } from '../../services/ionic-auth.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -13,6 +13,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class AggiungiPage implements OnInit {
 
   ExForm: FormGroup;
+
+  idUtente: any;
 
 
   error_msg = {
@@ -38,9 +40,12 @@ export class AggiungiPage implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private fb: FormBuilder,
     private database: AngularFirestore
-    ) { }
+    ) {
+      this.idUtente = this.route.snapshot.paramMap.get('idUtente');
+     }
 
   ngOnInit() {
 
@@ -59,7 +64,7 @@ export class AggiungiPage implements OnInit {
   }
 
   home(){
-    this.router.navigate(['/home']);
+    this.router.navigate(['/home', this.idUtente]);
   }
 
   cerca(){
@@ -67,7 +72,7 @@ export class AggiungiPage implements OnInit {
   }
 
   aggiungi(){
-    this.router.navigate(['/aggiungi']);
+    this.router.navigate(['/aggiungi', this.idUtente]);
   }
 
   preferiti(){
@@ -75,7 +80,7 @@ export class AggiungiPage implements OnInit {
   }
 
   profilo(){
-    this.router.navigate(['/profilo']);
+    this.router.navigate(['/profilo', this.idUtente]);
   }
 
   segmentChanged(ev: any) {
@@ -83,27 +88,31 @@ export class AggiungiPage implements OnInit {
   }
 
   eserizipage(value){
+    var docRef = this.database.collection("utente", ref => ref.where('id','==',this.idUtente));
+        docRef.get().toPromise().then((querySnapshot) => {
+          querySnapshot.forEach( (doc) => {
+            this.database.collection("scheda").add({   nome: value.nome, genere: value.genere, intensita: value.intensita, creatore: doc.data()['username'],})
+            .then((docRef) => {  
 
-    this.database.collection("scheda").add({   nome: value.nome, genere: value.genere, intensita: value.intensita, creatore: "",})
-      .then((docRef) => {  
+              var ExRef = this.database.collection("scheda").doc(docRef.id);
+              this.router.navigate(['/aggiungiesercizi', docRef.id, this.idUtente]);
 
-        var ExRef = this.database.collection("scheda").doc(docRef.id);
-        this.router.navigate(['/aggiungiesercizi', docRef.id]);
+              return ExRef.update({
+                  id: docRef.id
+              })
+              .then(() => {
+                  console.log("Document successfully updated!");
+              })
+              .catch((error) => {
+                  // The document probably doesn't exist.
+                  console.error("Error updating document: ", error);
+              });
 
-        return ExRef.update({
-            id: docRef.id
-        })
-        .then(() => {
-            console.log("Document successfully updated!");
-        })
-        .catch((error) => {
-            // The document probably doesn't exist.
-            console.error("Error updating document: ", error);
+              })
+            .catch((error) => {    console.error("Error adding document: ", error);});
+
+          });
         });
-
-        })
-      .catch((error) => {    console.error("Error adding document: ", error);});
-
     console.log(value.nome);
     console.log(value.genere);
     console.log(value.intensita);

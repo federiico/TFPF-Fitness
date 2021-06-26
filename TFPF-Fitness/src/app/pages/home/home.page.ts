@@ -30,7 +30,7 @@ export class HomePage {
   }
 
   aggiungi(){
-    this.router.navigate(['/aggiungi']);
+    this.router.navigate(['/aggiungi', this.idUtente]);
   }
 
   preferiti(){
@@ -43,16 +43,16 @@ export class HomePage {
 
   paginascheda($value){
     if($value == 1)
-      this.router.navigate(['/categoriascheda-calisthenics']);
+      this.router.navigate(['/categoriascheda-calisthenics', this.idUtente]);
     if($value == 2)
-      this.router.navigate(['/categoriascheda-yoga']);
+      this.router.navigate(['/categoriascheda-yoga', this.idUtente]);
     if($value == 3)
-      this.router.navigate(['/categoriascheda-power-lifting']);
+      this.router.navigate(['/categoriascheda-power-lifting', this.idUtente]);
     if($value == 4)
-      this.router.navigate(['/categoriascheda-cardio']);
+      this.router.navigate(['/categoriascheda-cardio', this.idUtente]);
     if($value == 5)
-      this.router.navigate(['/categoriascheda-crossfit']);
+      this.router.navigate(['/categoriascheda-crossfit', this.idUtente]);
     if($value == 6)
-      this.router.navigate(['/categoriascheda-pesistica']);
+      this.router.navigate(['/categoriascheda-pesistica', this.idUtente]);
     }
 }

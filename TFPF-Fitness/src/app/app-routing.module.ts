@@ -35,11 +35,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profilo/profilo.module').then( m => m.ProfiloPageModule)
   },
   {
-    path: 'aggiungi',
+    path: 'aggiungi/:idUtente',
     loadChildren: () => import('./pages/aggiungi/aggiungi.module').then( m => m.AggiungiPageModule)
   },
   {
-    path: 'aggiungiesercizi/:id',
+    path: 'aggiungiesercizi/:id/:idUtente',
     loadChildren: () => import('./pages/aggiungiesercizi/aggiungiesercizi.module').then( m => m.AggiungieserciziPageModule)
   },
   {
@@ -59,27 +59,27 @@ const routes: Routes = [
     loadChildren: () => import('./pages/esercizio/esercizio.module').then( m => m.EsercizioPageModule)
   },
   {
-    path: 'categoriascheda-calisthenics',
+    path: 'categoriascheda-calisthenics/:idUtente',
     loadChildren: () => import('./pages/categoriascheda-calisthenics/categoriascheda-calisthenics.module').then( m => m.CategoriaschedaCalisthenicsPageModule)
   },
   {
-    path: 'categoriascheda-yoga',
+    path: 'categoriascheda-yoga/:idUtente',
     loadChildren: () => import('./pages/categoriascheda-yoga/categoriascheda-yoga.module').then( m => m.CategoriaschedaYogaPageModule)
   },
   {
-    path: 'categoriascheda-power-lifting',
+    path: 'categoriascheda-power-lifting/:idUtente',
     loadChildren: () => import('./pages/categoriascheda-power-lifting/categoriascheda-power-lifting.module').then( m => m.CategoriaschedaPowerLiftingPageModule)
   },
   {
-    path: 'categoriascheda-cardio',
+    path: 'categoriascheda-cardio/:idUtente',
     loadChildren: () => import('./pages/categoriascheda-cardio/categoriascheda-cardio.module').then( m => m.CategoriaschedaCardioPageModule)
   },
   {
-    path: 'categoriascheda-crossfit',
+    path: 'categoriascheda-crossfit/:idUtente',
     loadChildren: () => import('./pages/categoriascheda-crossfit/categoriascheda-crossfit.module').then( m => m.CategoriaschedaCrossfitPageModule)
   },
   {
-    path: 'categoriascheda-pesistica',
+    path: 'categoriascheda-pesistica/:idUtente',
     loadChildren: () => import('./pages/categoriascheda-pesistica/categoriascheda-pesistica.module').then( m => m.CategoriaschedaPesisticaPageModule)
   },
 ];
