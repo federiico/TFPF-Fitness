@@ -19,12 +19,12 @@
     <ion-list>
       <ion-item *ngFor="let utente of listaUtenti  | async">
         <ion-avatar slot="start">
-          <a href="http://localhost:8100/profiloutente/{{utente.uid}}/{{idUtente}}">
+          <a (click)="profiloutente(utente.uid)">
             <img src="assets/image/profile-user.png">
           </a>
         </ion-avatar>
         <ion-label>
-          <h2><b> <a style="color:black; text-decoration: none;" href="http://localhost:8100/profiloutente/{{utente.uid}}/{{idUtente}}"> {{utente.username}}</a></b></h2>
+          <h2><b> <a style="color:black; text-decoration: none;" (click)="profiloutente(utente.uid)"> {{utente.username}}</a></b></h2>
           <h3>{{utente.nome}} {{utente.cognome}}</h3>
         </ion-label>
       </ion-item>

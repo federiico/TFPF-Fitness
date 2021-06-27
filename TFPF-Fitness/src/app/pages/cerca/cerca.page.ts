@@ -46,6 +46,10 @@ export class CercaPage implements OnInit {
     this.router.navigate(['/profilo', this.idUtente]);
   }
 
+  profiloutente(id){
+    this.router.navigate(['/profiloutente', id, this.idUtente]);
+  }
+
   cercaUtenti($value){
     this.listaUtenti = this.database.collection<Utente>("utente", ref => ref.orderBy('usernameLC').startAt($value.toLowerCase()).endAt($value.toLowerCase()+'\uf8ff')).valueChanges();
   }

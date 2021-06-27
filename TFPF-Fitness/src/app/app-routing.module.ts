@@ -69,15 +69,15 @@ const routes: Routes = [
   },
   {
     path: 'schede-profilo/:idUtente/:cat',
-    loadChildren: () => import('./schede-profilo/schede-profilo.module').then( m => m.SchedeProfiloPageModule)
+    loadChildren: () => import('./pages/schede-profilo/schede-profilo.module').then( m => m.SchedeProfiloPageModule)
   },
   {
     path: 'schede-categoria/:idUtente/:cat',
-    loadChildren: () => import('./schede-categoria/schede-categoria.module').then( m => m.SchedeCategoriaPageModule)
+    loadChildren: () => import('./pages/schede-categoria/schede-categoria.module').then( m => m.SchedeCategoriaPageModule)
   },
   {
     path: 'schede-profilo-utente/:id/:idUtente/:cat',
-    loadChildren: () => import('./schede-profilo-utente/schede-profilo-utente.module').then( m => m.SchedeProfiloUtentePageModule)
+    loadChildren: () => import('./pages/schede-profilo-utente/schede-profilo-utente.module').then( m => m.SchedeProfiloUtentePageModule)
   },
 
 ];
