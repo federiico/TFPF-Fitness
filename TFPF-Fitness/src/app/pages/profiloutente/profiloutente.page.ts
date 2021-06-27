@@ -11,6 +11,8 @@ export class ProfiloutentePage implements OnInit {
 
   idUtente: any;
   Username: any;
+  Nome: any;
+  Cognome: any;
   id: any;
 
   constructor(
@@ -27,6 +29,8 @@ export class ProfiloutentePage implements OnInit {
         docRef.get().toPromise().then((querySnapshot) => {
           querySnapshot.forEach( (doc) => {
             this.Username = doc.data()['username'];
+            this.Nome = doc.data()['nome'];
+            this.Cognome = doc.data()['cognome'];
           });
         });
   }

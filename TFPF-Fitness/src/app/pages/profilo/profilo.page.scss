@@ -12,3 +12,13 @@
     --background-activated: white;
     --background-hover: #FF40AC;
 }
+
+ion-content {
+    --offset-bottom: auto!important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    background-color: white;
+}

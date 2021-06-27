@@ -11,6 +11,8 @@ export class ProfiloPage implements OnInit {
 
   idUtente: any;
   Username: any;
+  Nome: any;
+  Cognome: any;
 
   constructor(
     private router: Router,
@@ -25,6 +27,8 @@ export class ProfiloPage implements OnInit {
         docRef.get().toPromise().then((querySnapshot) => {
           querySnapshot.forEach( (doc) => {
             this.Username = doc.data()['username'];
+            this.Nome = doc.data()['nome'];
+            this.Cognome = doc.data()['cognome'];
           });
         });
   }

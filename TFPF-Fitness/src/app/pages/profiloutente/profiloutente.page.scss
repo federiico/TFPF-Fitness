@@ -7,3 +7,12 @@
     text-align: center;
     margin-top: 10px;
 }
+
+ion-content {
+    --offset-bottom: auto!important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+}

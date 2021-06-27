@@ -51,7 +51,7 @@ export class AggiungieserciziPage implements OnInit {
 
   async openToastF(){
     const toast = await this.toastController.create({
-      message: "Scheda Completata!",
+      message: "Nuova scheda creata.",
       duration: 2000
 
     });
@@ -162,7 +162,6 @@ export class AggiungieserciziPage implements OnInit {
   }
   
   aggiungiex(value, RifEx, nome, muscoli, tipologia){
-    
 
     this.database.collection("scheda/"+ this.id +"/esercizi").add({ idex: RifEx ,serie:value.serie, ripetizioni: value.ripetizioni, nome:nome, muscoli:muscoli, tipologia: tipologia })
       .then((docRef) => {  

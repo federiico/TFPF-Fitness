@@ -18,7 +18,17 @@ export class HomePage {
   }
 
   ngOnInit(){
-    
+    var userAgent = navigator.userAgent || navigator.vendor;
+
+    // Windows Phone must come first because its UA also contains "Android"
+    if (/android/i.test(userAgent)) {
+        console.log("android");
+    }
+
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      console.log("ios");
+    }
+
   }
 
   home(){

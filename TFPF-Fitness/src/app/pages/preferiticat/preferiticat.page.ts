@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Schede } from 'src/app/modal/Schede';
 import { Observable } from 'rxjs';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-preferiticat',
@@ -18,10 +19,19 @@ export class PreferiticatPage implements OnInit {
   constructor(
     private router: Router,
     private database: AngularFirestore,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public toastController: ToastController
   ) { 
     this.idUtente = this.route.snapshot.paramMap.get('idUtente');
     this.cat = this.route.snapshot.paramMap.get('cat');
+  }
+
+  async openToastRimossa(){
+    const toast = await this.toastController.create({
+      message: "Scheda rimossa dalle tue preferite.",
+      duration: 2000
+    });
+    toast.present();
   }
 
   ngOnInit() {
@@ -60,6 +70,7 @@ export class PreferiticatPage implements OnInit {
         querySnapshot.forEach( (doc) => {
           this.database.collection("utente/"+this.idUtente+"/preferiti").doc(doc.data()["uid"]).delete().then(() => {
             console.log(doc.data());
+            this.openToastRimossa();
             console.log("Document successfully deleted!");
           }).catch((error) => {
             console.error("Error removing document: ", error);
