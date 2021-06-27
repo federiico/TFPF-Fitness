@@ -57,4 +57,7 @@ export class EsercizioPage implements OnInit {
     this.router.navigate(['/scheda', this.id2, this.idUtente]);
   }
 
+  video(url){
+    window.open(url, '_system');
+  }
 }
