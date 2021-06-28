@@ -2,7 +2,7 @@
   <ion-toolbar>
     <a (click)="home()"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>  
-  <p style="text-align: center;"id="scritta"><b>Crea una scheda</b></p>
+  <p style="text-align: center;"><b>Crea una scheda</b></p>
   <div size="12" mode="md">
     <form class="form" [formGroup]="ExForm" (ngSubmit)="esercizipage(ExForm.value)">
       <ion-toolbar>
@@ -38,7 +38,7 @@
             </ion-select>
           </ion-item>
         </ion-list>
-        <ion-button style="position: relative; left: 8px;" type="submit" id="bottone" shape="round" [disabled]="!ExForm.valid">Aggiungi gli esercizi<ion-icon name="caret-forward-outline"></ion-icon></ion-button>
+        <ion-button expand="block" type="submit" id="bottone_viola" shape="round" [disabled]="!ExForm.valid">Aggiungi gli esercizi<ion-icon name="caret-forward-outline"></ion-icon></ion-button>
       </ion-toolbar>
     </form>
     <ng-container *ngFor="let error of error_msg.email">

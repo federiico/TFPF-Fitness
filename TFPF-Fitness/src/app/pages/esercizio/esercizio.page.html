@@ -3,7 +3,7 @@
     <a (click)="home()"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>
   <br>
-  <p style="position: relative; top: -15px; left: -5px; text-align: center;"id="scritta"><b>Dettagli esercizio</b></p>
+  <p style="position: relative; top: -15px; left: -5px; text-align: center;"><b>Dettagli esercizio</b></p>
   <div style="position: relative; top: -5px;" *ngFor="let Esercizio of Esercizio  | async">
     <p style="font-size: 15px; padding-bottom: 3px;" id="scritta_piccola"><b>Nome:</b> {{Esercizio.nome}}</p>
     <p style="font-size: 15px; padding-bottom: 3px;" id="scritta_piccola"><b>Muscoli coinvolti:</b> {{Esercizio.muscoli}}</p>

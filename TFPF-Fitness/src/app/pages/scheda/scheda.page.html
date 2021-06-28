@@ -3,7 +3,7 @@
     <a (click)="home()"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>
   <br>
-  <p style="position: relative; top: -15px; left: -5px; text-align: center;"id="scritta"><b>Dettagli scheda</b></p>
+  <p style="position: relative; top: -15px; left: -5px; text-align: center;"><b>Dettagli scheda</b></p>
   <div *ngFor="let Scheda of Scheda  | async" class="square">
     <p style="font-size: 15px;" id="scritta_piccola"><b>Nome Scheda:</b> {{Scheda.nome}}</p>
     <p style="font-size: 15px;" id="scritta_piccola"><b>Utente creatore:</b> {{Scheda.creatore}}</p>
