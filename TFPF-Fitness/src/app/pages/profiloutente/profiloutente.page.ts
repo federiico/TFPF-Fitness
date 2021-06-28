@@ -63,7 +63,7 @@ export class ProfiloutentePage implements OnInit {
     if($value == 1)
       this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Calisthenics"]);
     if($value == 2)
-      this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Yoga"]);
+      this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Tabata"]);
     if($value == 3)
       this.router.navigate(['/schede-profilo-utente', this.id, this.idUtente, "Powerlifting"]);
     if($value == 4)

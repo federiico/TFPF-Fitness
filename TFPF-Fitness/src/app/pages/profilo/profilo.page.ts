@@ -61,7 +61,7 @@ export class ProfiloPage implements OnInit {
     if($value == 1)
       this.router.navigate(['/schede-profilo', this.idUtente, "Calisthenics"]);
     if($value == 2)
-      this.router.navigate(['/schede-profilo', this.idUtente, "Yoga"]);
+      this.router.navigate(['/schede-profilo', this.idUtente, "Tabata"]);
     if($value == 3)
       this.router.navigate(['/schede-profilo', this.idUtente, "Powerlifting"]);
     if($value == 4)

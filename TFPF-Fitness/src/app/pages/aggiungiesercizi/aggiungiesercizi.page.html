@@ -12,13 +12,7 @@
     (ionChange)="cercaEsercizi($event.target.value)"
     placeholder="Cerca"></ion-searchbar>
   </ion-toolbar>
-  
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="padding-bottom: 20%;">
-    <ion-fab-button id="bottone_b" (click)="checkScheda()">
-      <ion-icon name="checkmark-done-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  
+   
   <form [formGroup]="ExplusForm" (ngSubmit)="aggiungiex(ExplusForm.value,Esercizio.id,Esercizio.nome, Esercizio.muscoli, Esercizio.tipologia)" *ngFor="let Esercizio of ExList  | async">
     <div style="text-align: center;">
       <p id="scritta"><b>Nome esercizio:</b> {{Esercizio.nome}}</p>
@@ -26,10 +20,10 @@
       <p id="scritta"><b>Tipologia:</b> {{Esercizio.tipologia}}</p>
       <ion-item> 
         <br>
-        <ion-label ><b>N. Serie</b></ion-label>
-        <ion-input placeholder="0" type="number" min="0" required formControlName="serie"></ion-input>
-        <ion-label><b>N. Ripetizioni</b></ion-label>
-        <ion-input placeholder="0" type="number" min="0" required formControlName="ripetizioni"></ion-input>
+        <ion-label style="font-size: 15px;  position: relative; top:-2px"><b>N. Serie</b></ion-label>
+        <ion-input style="min-width: 45px;" placeholder="0" type="number" min="0" required formControlName="serie"></ion-input>
+        <ion-label style="font-size: 15px; position: relative; right: -10px; top:-2px"><b>N. Ripetizioni</b></ion-label>
+        <ion-input style="min-width: 45px; position: relative; right: -15px;" placeholder="0" type="number" min="0" required formControlName="ripetizioni"></ion-input>
       </ion-item>
       <ion-toolbar>
         <ion-button id="bottone_a" type="submit" [disabled]="!ExplusForm.valid" (click)="openToast()">
@@ -39,6 +33,11 @@
     </div>
   </form>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" style="padding-bottom: 20%; position: relative; left: 210px; top:460px;" >
+    <ion-fab-button id="bottone_b" (click)="checkScheda()">
+      <ion-icon name="checkmark-done-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 
 <ion-tab-bar slot="bottom">

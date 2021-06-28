@@ -34,9 +34,22 @@ export class PreferiticatPage implements OnInit {
     toast.present();
   }
 
+  async openToast(){
+    const toast = await this.toastController.create({
+      message: "Non hai schede preferite di questa categoria.",
+      duration: 2000
+    });
+    toast.present();
+  }
+
   ngOnInit() {
     this.SchedePref = this.database.collection<Schede>("utente/"+this.idUtente+"/preferiti", ref => ref.where('genere', '==', this.cat)).valueChanges();
+    this.SchedePref.subscribe(result => {
+      if(result.length == 0)
+        this.openToast();
+    });
   }
+
 
   home(){
     this.router.navigate(['/home', this.idUtente]);
