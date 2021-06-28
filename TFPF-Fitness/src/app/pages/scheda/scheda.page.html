@@ -3,22 +3,22 @@
     <a (click)="home()"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>
   <br>
-  <div *ngFor="let Scheda of Scheda  | async">
-    <p id="scritta"><b>Nome Scheda:</b> {{Scheda.nome}}</p>
-    <p id="scritta_piccola"><b>Utente creatore:</b> {{Scheda.creatore}}</p>
-    <p id="scritta_piccola"><b>Genere:</b> {{Scheda.genere}}</p>
-    <p id="scritta_piccola"><b>Intensità:</b> {{Scheda.intensita}}</p>
-
+  <p style="position: relative; top: -15px; left: -5px; text-align: center;"id="scritta"><b>Dettagli scheda</b></p>
+  <div *ngFor="let Scheda of Scheda  | async" class="square">
+    <p style="font-size: 15px;" id="scritta_piccola"><b>Nome Scheda:</b> {{Scheda.nome}}</p>
+    <p style="font-size: 15px;" id="scritta_piccola"><b>Utente creatore:</b> {{Scheda.creatore}}</p>
+    <p style="font-size: 15px;" id="scritta_piccola"><b>Genere:</b> {{Scheda.genere}}</p>
+    <p style="font-size: 15px;" id="scritta_piccola"><b>Intensità:</b> {{Scheda.intensita}}</p>
   </div>
   <br>
-  <p id="scritta"><b>Esercizi:</b></p>
+  <p style="position: relative; top: -15px; left: -13px; text-align: center;"id="scritta"><b>Esercizi</b></p>
 
-  <ion-item button="true" (click)="esercizio(ExScheda.idex)" *ngFor="let ExScheda of ExScheda  | async">
-    <ion-label>
-      <h2>Nome esercizio: {{ExScheda.nome}}</h2>
-      <p>Muscolo: {{ExScheda.muscoli}}</p>
-      <p>Tipologia: {{ExScheda.tipologia}}</p>
-      <p>Serie x ripetizioni: {{ExScheda.serie}} x {{ExScheda.ripetizioni}}</p>
+  <ion-item lines="none" class="square" style="position: relative; left:-10px; top:-25px; width: 295px;"  button="true" (click)="esercizio(ExScheda.idex)" *ngFor="let ExScheda of ExScheda  | async">
+    <ion-label class="square" style="background-color:whitesmoke; border-radius: 15px; border-style: solid;border-width: 2px; border-color:#ff40ac; width: 25%; height: 50px; padding-bottom: 40%;">
+      <p style="padding-left: 5px; padding-top: 5px; color:black; padding-top: 8px;"><b>Nome:</b> {{ExScheda.nome}}</p>
+      <p style="padding-left: 5px; color: black;"><b>Muscolo:</b> {{ExScheda.muscoli}}</p>
+      <p style="padding-left: 5px; color: black"><b>Tipologia:</b> {{ExScheda.tipologia}}</p>
+      <p style="padding-left: 5px; color: black;"><b>Serie x ripetizioni:</b> {{ExScheda.serie}} x {{ExScheda.ripetizioni}}</p>
     </ion-label>
   </ion-item>
 

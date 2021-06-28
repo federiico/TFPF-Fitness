@@ -5,24 +5,21 @@
   <br>
   <p style="position: relative; left: -5px; top:-15px; text-align: center;"id="scritta" ><b>Le sue schede di {{cat}}</b></p>
 
-    <ion-item-sliding style="position: relative; top: -25px;" id="item100" *ngFor="let Scheda of SchedeProfilo  | async"> 
-      <ion-item button="true" (click)="scheda(Scheda.uid)">
-        <ion-label >
-          <h2><b>Nome scheda:</b>  {{Scheda.nome}}</h2>
-          <p><b>Intensità:</b> {{Scheda.intensita}}</p>
-          <p><b>Genere:</b> {{Scheda.genere}}</p>
-          <p><b>Utente creatore:</b> {{Scheda.creatore}}</p>
-        </ion-label>
-        <ion-note slot="end">
-          {{Scheda.Data}}
-        </ion-note>
-      </ion-item>
-      <ion-item-options side="end" (click)="aggpreferiti(Scheda)" >
-        <ion-item-option color="danger">
-          <ion-icon size="large" name="heart"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
+  <ion-item-sliding  style=" position: relative; top: -25px;" id="item100" *ngFor="let Scheda of SchedeProfilo  | async"> 
+    <ion-item lines="none" button="true" (click)="scheda(Scheda.uid)" class="square" style="position: relative; left:-15px; width: 300px; padding-left: 5px;">
+       <ion-label class="square" style="border-radius: 15px; border-style: solid; border-width: 2px; border-color:#ff40ac;height: 110px;background-color: whitesmoke !important;">
+        <h2 style="padding-top: 5px; padding-left: 5px;"><b>Nome:</b> {{Scheda.nome}}</h2>
+        <p style="color: black; padding-left: 5px;"><b>Intensità:</b> {{Scheda.intensita}}</p>
+        <p style="color: black; padding-left: 5px;"><b>Genere:</b> {{Scheda.genere}}</p>
+        <p style="color: black; padding-left: 5px;"><b>Utente creatore:</b> {{Scheda.creatore}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item-options side="end" style="padding-left: 6px;">
+      <ion-item-option (click)="aggpreferiti(Scheda)" color="danger" class="square" style="border-style: solid; height: 115px; border-radius: 15px; position:relative; top:8px;" >
+        <ion-icon size="large" name="heart"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
 
 </ion-content>
 

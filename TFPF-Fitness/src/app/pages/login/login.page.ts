@@ -22,13 +22,13 @@ export class LoginPage implements OnInit {
     'email': [
       { 
         type: 'required', 
-        message: 'Inserisci Email.' 
+        message: "Inserisci l'email." 
       }
     ],
     'password': [
       { 
         type: 'required', 
-        message: 'Inserisci password.' 
+        message: "Inserisci la password." 
       }
     ]
   };
@@ -76,7 +76,7 @@ export class LoginPage implements OnInit {
         this.successMsg ="";
       })
     this.ionicAuthService.signinUser(value).catch((response) => {
-      this.errore = "Email/password non validi";
+      this.errore = "Email e/o password errati.";
     })
 
   }

@@ -1,18 +1,17 @@
-<ion-content>
-  <ion-toolbar>
+<ion-content style="background-color: white;">
+  <ion-toolbar style="padding-top: 10px;">
     <a (click)="home()"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>
   <br>
-  <div *ngFor="let Esercizio of Esercizio  | async">
-    <p id="scritta"><b>Nome Esercizio: {{Esercizio.nome}}</b></p>
-    <p id="scritta_piccola">Muscolo: {{Esercizio.muscoli}}</p>
-    <p id="scritta_piccola">Tipologia: {{Esercizio.tipologia}}</p>
-    <br>
-    <p id="scritta"><b>Descrizione: </b></p>
-    <p id ="scritta">{{Esercizio.descrizione}}</p>
-    <p id="scritta_piccola">Per un video esplicativo clicca <a (click)="video(Esercizio.video)"> qui </a></p>
+  <p style="position: relative; top: -15px; left: -5px; text-align: center;"id="scritta"><b>Dettagli esercizio</b></p>
+  <div style="position: relative; top: -5px;" *ngFor="let Esercizio of Esercizio  | async">
+    <p style="font-size: 15px; padding-bottom: 3px;" id="scritta_piccola"><b>Nome:</b> {{Esercizio.nome}}</p>
+    <p style="font-size: 15px; padding-bottom: 3px;" id="scritta_piccola"><b>Muscoli coinvolti:</b> {{Esercizio.muscoli}}</p>
+    <p style="font-size: 15px; padding-bottom: 3px;" id="scritta_piccola"><b>Tipologia:</b> {{Esercizio.tipologia}}</p>
+    <p style="font-size: 15px; padding-top: 10px;" id="scritta"><b>Descrizione: </b></p>
+    <p style="font-size: 15px; position: relative; top: -10px;" id ="scritta">{{Esercizio.descrizione}}</p>
+    <ion-button (click)="video(Esercizio.video)" style="width: 200px; height: 35px; position: relative; left: 35px; --background: #ff40ac;" shape="round" expand="block">Vedi il video tutorial</ion-button>
   </div>
-
 </ion-content>
 
 <ion-tab-bar slot="bottom">
