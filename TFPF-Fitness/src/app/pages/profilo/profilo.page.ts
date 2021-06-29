@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { IonicAuthService } from 'src/app/services/ionic-auth.service';
 
 @Component({
   selector: 'app-profilo',
@@ -17,7 +18,8 @@ export class ProfiloPage implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private database: AngularFirestore
+    private database: AngularFirestore,
+    private ionicAuthService: IonicAuthService
   ) { 
     this.idUtente = this.route.snapshot.paramMap.get('idUtente');
   }
@@ -81,5 +83,10 @@ export class ProfiloPage implements OnInit {
       this.router.navigate(['/schede-profilo', this.idUtente, "Crossfit"]);
     if($value == 6)
       this.router.navigate(['/schede-profilo', this.idUtente, "Pesistica"]);
+    }
+
+    esci(){
+      this.ionicAuthService.signoutUser();
+      this.router.navigate(['']);
     }
 }
