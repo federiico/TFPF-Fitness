@@ -41,11 +41,7 @@ export class LoginPage implements OnInit {
     private nav: NavController,
     private database: AngularFirestore,
     private platform: Platform
-    ) {
-      this.platform.ready().then(() => {
-        console.log('Width: ' + platform.width());
-        console.log('Height: ' + platform.height()); });
-  }
+    ) {}
 
   ngOnInit() {
     this.userForm = this.fb.group({
