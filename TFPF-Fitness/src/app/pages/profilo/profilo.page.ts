@@ -33,6 +33,17 @@ export class ProfiloPage implements OnInit {
         });
   }
 
+  ionViewWillEnter(){
+    var docRef = this.database.collection("utente", ref => ref.where('uid','==',this.idUtente));
+    docRef.get().toPromise().then((querySnapshot) => {
+      querySnapshot.forEach( (doc) => {
+        this.Username = doc.data()['username'];
+        this.Nome = doc.data()['nome'];
+        this.Cognome = doc.data()['cognome'];
+      });
+    });
+   }
+
   home(){
     this.router.navigate(['/home', this.idUtente]);
   }
