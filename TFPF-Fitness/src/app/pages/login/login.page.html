@@ -3,35 +3,20 @@
     <img src="../assets/image/logo_scritta.png" alt="logo" width="200 px" height="80 px" style="margin-bottom: 50px;">
   </div>
 
-  <ng-container *ngFor="let error of error_msg.email">
-    <div style="text-align: center; color: red;">
-      {{ errore }}
-    </div>
-  </ng-container>
-  <ng-container *ngFor="let error of error_msg.email">
-    <div style="text-align: center; color: red;" *ngIf="userForm.get('email').hasError(error.type) && (userForm.get('email').dirty || userForm.get('email').touched)">
-      {{ error.message }}
-    </div>
-  </ng-container>
-
   <form class="form" [formGroup]="userForm" (ngSubmit)="logmeIN(userForm.value)">
     <ion-item>
-      <ion-input placeholder="E-mail" formControlName="email">
+      <ion-input placeholder="E-mail" formControlName="email" [(ngModel)] = "mail">
       </ion-input>
       <ion-icon name="person-outline"></ion-icon>
     </ion-item>
     <br>
     <ion-item>
-      <ion-input placeholder="Password" type="password" formControlName="password">
+      <ion-input placeholder="Password" type="password" formControlName="password" [(ngModel)] = "pw">
       </ion-input>
       <ion-icon name="lock-closed-outline"></ion-icon>
     </ion-item>
-
     <ion-button style="position: relative; left: -10px;" id="bottonelogin" shape="round" type="submit" [disabled]="!userForm.valid">ACCEDI <ion-icon name="log-in-outline"></ion-icon></ion-button>
   </form> 
-
-  
-  
   <div class="sotto">
     <ion-button (click)="signinpage()" id="bottonesignin" expand="block" style="position: relative; top: 110px;" shape="round" expand="block">REGISTRATI <ion-icon name="push-outline"></ion-icon></ion-button>
   </div>

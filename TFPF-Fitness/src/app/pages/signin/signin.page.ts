@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { IonicAuthService } from '../../services/ionic-auth.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-signin',
@@ -12,38 +14,22 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class SigninPage implements OnInit {
 
   userForm: FormGroup;
-  successMsg: string = '';
-  errorMsg: string = '';
-
-  error_msg = {
-    'email': [
-      { 
-        type: 'required', 
-        message: 'Inserisci un email.' 
-      },
-      { 
-        type: 'pattern', 
-        message: 'Email non valida.' 
-      }
-    ],
-    'password': [
-      { 
-        type: 'required', 
-        message: 'Password necessaria.' 
-      },
-      { 
-        type: 'minlength', 
-        message: 'Password deve essere di almeno 6 caratteri' 
-      }
-    ]
-  };
 
   constructor( 
     private router: Router,
     private ionicAuthService: IonicAuthService,
     private fb: FormBuilder,
-    private database: AngularFirestore
+    private database: AngularFirestore,
+    public toastController: ToastController
     ) { }
+
+    async openToastBenvenuto(){
+      const toast = await this.toastController.create({
+        message: "Benvenuto in TFPF-Fitness.",
+        duration: 2500
+      });
+      toast.present();
+    }
 
     ngOnInit() {
       this.userForm = this.fb.group({
@@ -58,13 +44,17 @@ export class SigninPage implements OnInit {
         ])),
         email: new FormControl('', Validators.compose([
           Validators.required,
-          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+          Validators.pattern(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i)
         ])),
         password: new FormControl('', Validators.compose([
           Validators.minLength(6),
           Validators.required
         ])),
       });
+    }
+
+    ionViewWillEnter(){
+      this.ngOnInit();
     }
   
   
@@ -81,6 +71,7 @@ export class SigninPage implements OnInit {
             uid: docRef.id
         })
         .then(() => {
+            this.openToastBenvenuto();
             console.log("Document successfully updated!");
             this.router.navigate(['/home', docRef.id]);
         })
@@ -92,12 +83,7 @@ export class SigninPage implements OnInit {
         })
       .catch((error) => {    console.error("Error adding document: ", error);});
 
-
-      this.errorMsg = "Nope";
-      this.successMsg = "Nuovo Utente creato.";
     }, error => {
-      this.errorMsg = error.message;
-      this.successMsg = "Nope";
     });
 
     console.log(this.fb);

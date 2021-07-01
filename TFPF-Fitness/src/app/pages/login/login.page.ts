@@ -4,6 +4,7 @@ import { IonicAuthService } from '../../services/ionic-auth.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NavComponentWithProps, NavController,Platform } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -13,25 +14,8 @@ import { NavComponentWithProps, NavController,Platform } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   userForm: FormGroup;
-  successMsg: string = '';
-  errorMsg: string = '';
-  
-  errore: string = '';
-
-  error_msg = {
-    'email': [
-      { 
-        type: 'required', 
-        message: "Inserisci l'email." 
-      }
-    ],
-    'password': [
-      { 
-        type: 'required', 
-        message: "Inserisci la password." 
-      }
-    ]
-  };
+  pw: any;
+  mail: any;
 
   constructor(
     private router: Router, 
@@ -40,8 +24,17 @@ export class LoginPage implements OnInit {
     private firestore: AngularFirestore,
     private nav: NavController,
     private database: AngularFirestore,
-    private platform: Platform
+    private platform: Platform,
+    public toastController: ToastController
     ) {}
+
+    async openToastBadLogin(){
+      const toast = await this.toastController.create({
+        message: "Email e/o password errati.",
+        duration: 2000
+      });
+      toast.present();
+    }
 
   ngOnInit() {
     this.userForm = this.fb.group({
@@ -56,6 +49,12 @@ export class LoginPage implements OnInit {
     });
   }
 
+  ionViewWillEnter(){
+    this.pw = "";
+    this.mail = "";
+    this.ngOnInit();
+  }
+
   logmeIN(value) {
     this.ionicAuthService.signinUser(value)
       .then((response) => {
@@ -66,15 +65,10 @@ export class LoginPage implements OnInit {
             this.router.navigate(['home', idUtente]);
           });
         });
-        this.errorMsg = "";
-      }, error => {
-        this.errorMsg = error.message;
-        this.successMsg ="";
       })
     this.ionicAuthService.signinUser(value).catch((response) => {
-      this.errore = "Email e/o password errati.";
+      this.openToastBadLogin();
     })
-
   }
 
   signinpage(){
