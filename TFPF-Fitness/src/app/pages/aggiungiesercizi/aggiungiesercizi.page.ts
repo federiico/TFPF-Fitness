@@ -20,6 +20,8 @@ export class AggiungieserciziPage implements OnInit {
   public ExList: Observable<Esercizio[]>;
   public ExScheda: Observable<EsercizioScheda[]>;
   toast: any;
+  ripetizioni: any;
+  serie: any;
 
 
   constructor(
@@ -74,6 +76,8 @@ export class AggiungieserciziPage implements OnInit {
   }
 
   cercaEsercizi($value){
+    this.serie = 0;
+    this.ripetizioni = 0;
     this.ExList = this.database.collection<Esercizio>("esercizio", ref => ref.orderBy('nomeLC').startAt($value.toLowerCase()).endAt($value.toLowerCase()+'\uf8ff')).valueChanges();
   }
 

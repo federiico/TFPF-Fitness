@@ -21,9 +21,9 @@
       <ion-item> 
         <br>
         <ion-label style="font-size: 15px;  position: relative; top:-2px"><b>N. Serie</b></ion-label>
-        <ion-input style="min-width: 45px;" placeholder="0" type="number" min="0" required formControlName="serie"></ion-input>
+        <ion-input style="min-width: 45px;" placeholder="0" type="number" min="0" required formControlName="serie" [(ngModel)]="serie"></ion-input>
         <ion-label style="font-size: 15px; position: relative; right: -10px; top:-2px"><b>N. Ripetizioni</b></ion-label>
-        <ion-input style="min-width: 45px; position: relative; right: -15px;" placeholder="0" type="number" min="0" required formControlName="ripetizioni"></ion-input>
+        <ion-input style="min-width: 45px; position: relative; right: -15px;" placeholder="0" type="number" min="0" required formControlName="ripetizioni" [(ngModel)]="ripetizioni"></ion-input>
       </ion-item>
       <ion-toolbar>
         <ion-button id="bottone_a" type="submit" [disabled]="!ExplusForm.valid" (click)="openToast()">
