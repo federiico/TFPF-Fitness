@@ -15,6 +15,8 @@ export class HomePage {
     private route: ActivatedRoute
   ) {
     this.idUtente = this.route.snapshot.paramMap.get('idUtente');
+    console.log(window.innerHeight);
+    console.log(window.innerWidth);
   }
 
   ngOnInit(){

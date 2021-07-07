@@ -5,50 +5,50 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" style="position:static" style="background-color: white;">
-    <div id="logo_registrazione" style="position: relative; top: -10px;">
-      <img src="assets/image/logo.png" alt="logo" width="75 px" height="75 px">
+    <div id="logo_registrazione" style="position: relative; bottom: 3vh;">
+      <img src="assets/image/logo.png" alt="logo" style="width: 17vh; height: 17vh;">
     </div>
 
-    <p style="position: relative; top: -10px;" id="scritta"><b>Benvenuto in TFPF-Fitness</b></p>
+    <p style="text-align: center; font-style: lato; font-size: 2.8vh; position: relative; bottom: 2vh;"><b>Benvenuto in TFPF-Fitness</b></p>
 
-    <form style="position: relative; top: -10px;" class="form" [formGroup]="userForm" (ngSubmit)="signUp(userForm.value)" >
-      <ion-item style="height: 50px;">
+    <form style="position: relative; bottom: 3vh;" class="form" [formGroup]="userForm" (ngSubmit)="signUp(userForm.value)" >
+      <ion-item style="height: 8.5vh;">
         <ion-input placeholder="Nome" formControlName="nome">
         </ion-input>
         <ion-icon name="person-outline"></ion-icon>
       </ion-item>
   
-      <ion-item style="height: 50px;">
+      <ion-item style="height: 8.5vh;">
         <ion-input placeholder="Cognome" formControlName="cognome">
         </ion-input>
         <ion-icon name="person-outline"></ion-icon>
       </ion-item>
   
-      <ion-item style="height: 50px;">
+      <ion-item style="height: 8.5vh;">
         <ion-input placeholder="E-mail" formControlName="email">
         </ion-input>
         <ion-icon name="mail-outline"></ion-icon>
       </ion-item>
  
-      <ion-item style="height: 50px;">
+      <ion-item style="height: 8.5vh;">
         <ion-input placeholder="Username" formControlName="username">
         </ion-input>
         <ion-icon name="people-outline"></ion-icon>
       </ion-item>
   
-      <ion-item style="height: 50px;">
+      <ion-item style="height: 8.5vh;">
         <ion-input placeholder="Password" type="password" formControlName="password">
         </ion-input>
         <ion-icon name="lock-closed-outline"></ion-icon>
       </ion-item>
   
       <br>
-      <ion-button id="bottone" type="submit" expand="block" style="width: 200px; position: relative; left: 70px;"[disabled]="!userForm.valid" shape="round" expand="block" >REGISTRATI <ion-icon name="push-outline"></ion-icon></ion-button>
+      <ion-button id="bottone" type="submit" expand="block" style="width: 200px; position: relative; left: 25vw;"[disabled]="!userForm.valid" shape="round" expand="block" >REGISTRATI <ion-icon name="push-outline"></ion-icon></ion-button>
     </form>
     <br>
 
     <div>
-      <ion-button id="bottonesignin" (click)="logme()" style="position: relative; bottom: 25px;" shape="round" expand="block" >ACCEDI <ion-icon name="log-in-outline"></ion-icon></ion-button>
+      <ion-button id="bottonesignin" (click)="logme()" style="position: relative; bottom: 3vh; left: 17vw; width: 180px;" shape="round" expand="block" >ACCEDI <ion-icon name="log-in-outline"></ion-icon></ion-button>
     </div>
 
 </ion-content>

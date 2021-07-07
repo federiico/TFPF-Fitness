@@ -1,21 +1,21 @@
 <ion-content style="background-color: white;">
-  <ion-toolbar style="padding-top: 10px;">
+  <ion-toolbar >
     <a (click)="home()"><img id="logo_alto" src="assets/image/logo_scritta.png" alt="logoalto"></a>
   </ion-toolbar>
   <br>
-  <p style="position: relative; top: -15px; left: -5px; text-align: center;"><b>Schede {{cat}}</b></p>
+  <p style="position: relative; top: -3vh; left: -0.5vh; text-align: center; font-style: lato; font-size: 2.8vh;"><b>Schede {{cat}}</b></p>
 
-    <ion-item-sliding  style=" position: relative; top: -25px;" id="item100" *ngFor="let Scheda of SchedeProfilo  | async"> 
-      <ion-item lines="none" button="true" (click)="scheda(Scheda.uid)" class="square" style="position: relative; left:-15px; width: 300px; padding-left: 5px;">
-         <ion-label class="square" style="border-radius: 15px; border-style: solid; border-width: 2px; border-color:#ff40ac;height: 110px;background-color: whitesmoke !important;">
-          <h2 style="padding-top: 5px; padding-left: 5px;"><b>Nome:</b> {{Scheda.nome}}</h2>
-          <p style="color: black; padding-left: 5px;"><b>Intensità:</b> {{Scheda.intensita}}</p>
-          <p style="color: black; padding-left: 5px;"><b>Genere:</b> {{Scheda.genere}}</p>
-          <p style="color: black; padding-left: 5px;"><b>Utente creatore:</b> {{Scheda.creatore}}</p>
+    <ion-item-sliding  style=" position: relative; top: -3.5vh;" id="item100" *ngFor="let Scheda of SchedeProfilo  | async"> 
+      <ion-item lines="none" button="true" (click)="scheda(Scheda.uid)" class="square" style=" width: 100vw;">
+         <ion-label class="square" style="border-radius: 15px; border-style: solid; border-width: 2px; border-color:#ff40ac;height: 18vh;background-color: whitesmoke !important;">
+          <h2 style="padding-top: 5px; padding-left: 5px; font-style: lato; font-size: 2.5vh;"><b>Nome:</b> {{Scheda.nome}}</h2>
+          <p style="color: black; padding-left: 5px; font-style: lato; font-size: 2.5vh;"><b>Intensità:</b> {{Scheda.intensita}}</p>
+          <p style="color: black; padding-left: 5px; font-style: lato; font-size: 2.5vh;"><b>Genere:</b> {{Scheda.genere}}</p>
+          <p style="color: black; padding-left: 5px; font-style: lato; font-size: 2.5vh;"><b>Utente creatore:</b> {{Scheda.creatore}}</p>
         </ion-label>
       </ion-item>
-      <ion-item-options side="end" style="padding-left: 6px;">
-        <ion-item-option (click)="aggpreferiti(Scheda)" color="danger" class="square" style="border-style: solid; height: 115px; border-radius: 15px; position:relative; top:8px;" >
+      <ion-item-options side="end" >
+        <ion-item-option (click)="aggpreferiti(Scheda)" color="danger" class="square" style="border-style: solid; height: 18.5vh; border-radius: 15px; position:relative; top: 1.2vh;" >
           <ion-icon size="large" name="heart"></ion-icon>
         </ion-item-option>
       </ion-item-options>
